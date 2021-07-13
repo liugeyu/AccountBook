@@ -1,2 +1,6 @@
+include ':moduleCore:My'
+include ':moduleCore:statistics'
+include ':moduleCore:Home'
+include ':moduleSystem:Base'
 include ':app'
 rootProject.name = "AccountBook"

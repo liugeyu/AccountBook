@@ -1,0 +1,21 @@
+ext{
+
+    isModule = false
+    homeIsModule = isModule
+    myIsModule = isModule
+    statisticeIsModule = isModule
+    android=[
+            compileSdkVersion : 30,
+            targetSdkVersion: 30,
+            buildToolsVersion: "30.0.2",
+            minSdkVersion: 16,
+            versionCode: 1,
+            versionName: "1.0"
+    ]
+
+    dependenciesJar=[
+            "appcompat"         : 'androidx.appcompat:appcompat:1.2.0',
+            "material"          : 'com.google.android.material:material:1.3.0',
+            "constraintlayout"  : 'androidx.constraintlayout:constraintlayout:2.0.4',
+    ]
+}
