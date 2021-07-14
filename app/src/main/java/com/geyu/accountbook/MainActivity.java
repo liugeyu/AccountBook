@@ -1,17 +1,29 @@
 package com.geyu.accountbook;
 
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
 
-import com.geyu.base.BaseActivity;
+import com.geyu.accountbook.databinding.ActivityMainBinding;
+import com.geyu.base.Annotation.CreateViewModel;
+import com.geyu.base.BaseMvvmActivity;
 
-public class MainActivity extends BaseActivity {
+@CreateViewModel(MainactivityViewModel.class)
+public class MainActivity extends BaseMvvmActivity<MainactivityViewModel, ActivityMainBinding> {
+
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initView() {
+        mViewModel.test();
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
     }
 }
