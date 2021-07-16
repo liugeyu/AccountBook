@@ -13,6 +13,12 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
+        multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -31,10 +37,15 @@ android {
 }
 //
 dependencies {
-    implementation rootProject.dependenciesJar.appcompat
-    implementation rootProject.dependenciesJar.material
-    implementation rootProject.dependenciesJar.constraintlayout
+
     implementation project(path: ':moduleSystem:Base')
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+    implementation 'androidx.navigation:navigation-fragment:2.2.2'
+    implementation 'androidx.navigation:navigation-ui:2.2.2'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation project(path: ':modulePublic:youMenLib')
+    annotationProcessor rootProject.dependenciesJar.aroutercompiler
     if (rootProject.homeIsModule) {
         implementation project(path: ':moduleCore:Home')
     }
@@ -44,4 +55,5 @@ dependencies {
     if (rootProject.statisticeIsModule) {
         implementation project(path: ':moduleCore:statistics')
     }
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 }

@@ -31,4 +31,15 @@ public class ViewModelFactoryImpl implements ViewModelFactory{
         T t = (T) viewModelProvider.get(annotation.value());
         return t;
     }
+
+    @Override
+    public <T extends BaseViewModel> T createViewModel(BaseFragment fragment) {
+        CreateViewModel annotation = fragment.getClass().getAnnotation(CreateViewModel.class);
+        if (annotation == null) {
+            throw new NullPointerException("在activity中没有写CreateViewModel注解ViewModel");
+        }
+        ViewModelProvider viewModelProvider = new ViewModelProvider(fragment);
+        T t = (T) viewModelProvider.get(annotation.value());
+        return t;
+    }
 }

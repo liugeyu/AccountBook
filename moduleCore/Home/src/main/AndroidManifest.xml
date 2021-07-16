@@ -3,6 +3,5 @@
     package="com.geyu.home">
 
     <application>
-        <activity android:name=".ui.Home_MainActivity" />
     </application>
 </manifest>

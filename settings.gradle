@@ -1,3 +1,4 @@
+include ':modulePublic:youMenLib'
 include ':moduleCore:My'
 include ':moduleCore:statistics'
 include ':moduleCore:Home'

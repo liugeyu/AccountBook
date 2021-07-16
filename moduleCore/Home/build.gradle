@@ -16,6 +16,11 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -47,8 +52,6 @@ android {
 
 dependencies {
 
-    implementation rootProject.dependenciesJar.appcompat
-    implementation rootProject.dependenciesJar.material
     implementation project(path: ':moduleSystem:Base')
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    annotationProcessor rootProject.dependenciesJar.aroutercompiler
 }
