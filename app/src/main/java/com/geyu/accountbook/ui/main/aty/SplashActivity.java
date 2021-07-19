@@ -7,6 +7,7 @@ import com.geyu.accountbook.databinding.ActivitySplashBinding;
 import com.geyu.accountbook.ui.main.viewmodel.SplashViewModel;
 import com.geyu.base.Annotation.CreateViewModel;
 import com.geyu.base.BaseMvvmActivity;
+import com.geyu.utils.LLOG;
 import com.geyu.utils.TimeUtil;
 
 import io.reactivex.Observer;
@@ -29,11 +30,13 @@ public class SplashActivity extends BaseMvvmActivity<SplashViewModel, ActivitySp
     protected void initView() {
         super.initView();
 
-        Disposable disposable = TimeUtil.countDown(3)
+        Disposable disposable = TimeUtil.countDown(1)
                 .subscribe(l -> {
+                    LLOG.d("timer" + l);
+                }, throwable -> {}, () -> {
                     ARouter.getInstance().build(Constant.MainClass.ACTIVITY_MAIN).navigation();
                     finish();
-                }, throwable -> {});
+                });
         addDisposable(disposable);
     }
 }

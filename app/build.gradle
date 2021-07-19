@@ -45,6 +45,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation project(path: ':modulePublic:youMenLib')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     annotationProcessor rootProject.dependenciesJar.aroutercompiler
     if (rootProject.homeIsModule) {
         implementation project(path: ':moduleCore:Home')

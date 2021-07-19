@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">主页</string>
+
+    <array name="test_sp">
+        <item>日常111</item>
+        <item>日常2222</item>
+    </array>
 </resources>

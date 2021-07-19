@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="text_size_huge">
+        <item name="android:textSize">@dimen/sp_18</item>
+    </style>
+    <style name="text_size_big">
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+    <style name="text_size_medium">
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+    <style name="text_size_small">
+        <item name="android:textSize">@dimen/sp_12</item>
+    </style>
+
+
+    <style name="text_size_huge_bold" parent="text_size_huge">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="text_size_big_bold" parent="text_size_big">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="text_size_medium_bold" parent="text_size_medium">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="text_size_small_bold" parent="text_size_small">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_huge_title" parent="text_size_huge_bold">
+        <item name="android:textColor">@color/bleak_33</item>
+    </style>
+</resources>

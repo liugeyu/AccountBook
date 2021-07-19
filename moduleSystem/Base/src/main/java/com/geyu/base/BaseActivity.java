@@ -1,8 +1,11 @@
 package com.geyu.base;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 
+import com.geyu.utils.ScreenManager;
 import com.geyu.utils.SystemBarTintManagerHelper;
+import com.geyu.utils.swipeWindowHelper.SwipeWindowHelper;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +17,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private CompositeDisposable compositeDisposable;
 
+    private SwipeWindowHelper swipeWindowHelper;
+
     protected void addDisposable(Disposable disposable) {
         if (compositeDisposable == null || compositeDisposable.isDisposed()) {
             compositeDisposable = new CompositeDisposable();
@@ -24,6 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ScreenManager.getInstance().add(this);
         if (isDataBinding()) {
             initDataBinding(getLayoutId());
         } else {
@@ -60,6 +66,25 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected  void initData() {
     }
 
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (!isSupportSlideBack()) {
+            return super.dispatchTouchEvent(ev);
+        }
+        if (swipeWindowHelper == null) {
+            swipeWindowHelper = new SwipeWindowHelper(getWindow());
+        }
+        return swipeWindowHelper.processTouchEvent(ev) || super.dispatchTouchEvent(ev);
+    }
+    /**
+     * 是否支持滑动返回
+     *
+     * @return
+     */
+    protected boolean isSupportSlideBack() {
+        return true;
+    }
     protected  void initView() {
     }
 
@@ -72,6 +97,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        ScreenManager.getInstance().remove(this);
         if (compositeDisposable != null) {
             compositeDisposable.clear();
         }

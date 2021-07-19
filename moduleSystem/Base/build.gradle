@@ -43,5 +43,6 @@ dependencies {
     api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     api 'androidx.multidex:multidex:2.0.1'
     api 'com.gyf.immersionbar:immersionbar:3.0.0'
+    api project(path: ':moduleSystem:Database')
 
 }

@@ -1,5 +1,7 @@
 package com.geyu.youmenlib.helper;
 
+import com.umeng.analytics.MobclickAgent;
+
 /**
  * Sample相关的常量定义类
  */
@@ -9,7 +11,6 @@ public class PushConstants {
      */
 //    public static final String APP_KEY = "应用申请的Appkey";
     public static final String APP_KEY = "60f13c4a2a1a2a58e7dabf99";
-
     /**
      * 应用申请的UmengMessageSecret
      */

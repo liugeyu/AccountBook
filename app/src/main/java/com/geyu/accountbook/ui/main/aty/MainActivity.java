@@ -2,6 +2,7 @@ package com.geyu.accountbook.ui.main.aty;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.MenuItem;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -15,6 +16,10 @@ import com.geyu.base.BaseFragment;
 import com.geyu.base.BaseMvvmActivity;
 import com.geyu.utils.SystemBarTintManagerHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.umeng.analytics.MobclickAgent;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
@@ -32,7 +37,10 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBi
     }
 
 
-
+    @Override
+    protected boolean isSupportSlideBack() {
+        return false;
+    }
 
     @Override
     protected void initView() {
@@ -41,6 +49,11 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBi
 
         mDataBinding.navView.setOnNavigationItemSelectedListener(this);
         showFragment(R.id.nav_host_fragment,(BaseFragment) ARouter.getInstance().build(Constant.HomeClass.FRAGMENT_HOME).navigation());
+
+        Map<String,Object> test = new HashMap<>();
+        test.put("testkey","testData");
+        MobclickAgent.onEventObject(this,"string_test_123",test);
+
     }
 
     @Override
