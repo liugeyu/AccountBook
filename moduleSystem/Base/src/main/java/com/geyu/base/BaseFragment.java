@@ -50,5 +50,13 @@ public  class BaseFragment<D extends Serializable> extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getData(getArguments());
+        initView();
+        initData();
+    }
+
+    protected void initData() {
+    }
+
+    protected void initView() {
     }
 }

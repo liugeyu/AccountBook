@@ -18,10 +18,5 @@ public class MyTestActivity extends BaseActivity {
     protected void initView() {
         super.initView();
 
-        Record record = new Record();
-        record.setAccountId(3232132);
-        record.setAmount(111);
-        record.setTime(System.currentTimeMillis());
-        RecordDaoManager.save(record);
     }
 }
