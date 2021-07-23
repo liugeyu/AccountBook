@@ -8,8 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
-public  abstract class BaseViewHolder<VDB extends ViewDataBinding> extends RecyclerView.ViewHolder {
-    VDB mBinding ;
+public  abstract class BaseViewHolder<VDB extends ViewDataBinding, T> extends RecyclerView.ViewHolder {
+    protected VDB mBinding ;
     public BaseViewHolder(@NonNull VDB vdb) {
         super(vdb.getRoot());
         this.mBinding = vdb;
@@ -20,5 +20,5 @@ public  abstract class BaseViewHolder<VDB extends ViewDataBinding> extends Recyc
      *
      * @param data 数据
      */
-    protected abstract <T>void bindData(T data, int position);
+    protected abstract void bindData(T data, int position);
 }

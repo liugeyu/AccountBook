@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TopBar">
+        <attr name="text" format="string"/>
+        <attr name="left_img" format="reference|integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="MTabLayout">
+        <attr name="mTabIndicatorWidth" format="dimension" />
+        <attr name="mTabIndicatorHeight" format="dimension" />
+        <attr name="mTabIndicatorColor" format="color" />
+        <attr name="mTabPadding" format="dimension" />
+        <attr name="mTabPaddingStart" format="dimension" />
+        <attr name="mTabPaddingTop" format="dimension" />
+        <attr name="mTabPaddingEnd" format="dimension" />
+        <attr name="mTabPaddingBottom" format="dimension" />
+        <attr name="mTabTextColor" format="color" />
+        <attr name="mTabSelectedTextColor" format="color" />
+        <attr name="mTabTextSize" format="dimension" />
+        <attr name="mTabSelectedTextSize" format="dimension" />
+        <attr name="mTabMinWidth" format="dimension" />
+        <attr name="mTabMaxWidth" format="dimension" />
+        <attr name="mTabBackground" format="reference" />
+        <attr name="mTabContentStart" format="dimension" />
+        <attr name="mTabTextBoldOnSelect" format="boolean" />
+
+        <attr name="mTabMode">
+            <enum name="scrollable" value="0" />
+            <enum name="fixed" value="1" />
+        </attr>
+        <attr name="mTabGravity">
+            <enum name="fill" value="0" />
+            <enum name="center" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="MTabItem">
+        <attr name="android:text" />
+        <attr name="android:icon" />
+        <attr name="android:layout" />
+    </declare-styleable>
+</resources>

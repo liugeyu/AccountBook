@@ -23,7 +23,13 @@ public abstract class BaseMvvmFragment<VM extends BaseViewModel,VDB extends View
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mDataBinding = DataBindingUtil.inflate(inflater,getLayoutId(),container,false);
         mViewModel = ViewModelFactoryImpl.getInstance().createViewModel(this);
+        getLifecycle().addObserver(mViewModel);
         return mDataBinding.getRoot();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     protected abstract int getLayoutId();

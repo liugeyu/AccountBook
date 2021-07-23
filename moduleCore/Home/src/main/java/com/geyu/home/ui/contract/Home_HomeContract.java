@@ -5,4 +5,8 @@ public class Home_HomeContract {
 
     public static abstract class ViewMode extends BaseViewModel{
     }
+
+    public interface View{
+        void addNewRecord();
+    }
 }

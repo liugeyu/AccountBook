@@ -30,4 +30,12 @@
     <style name="text_huge_title" parent="text_size_huge_bold">
         <item name="android:textColor">@color/bleak_33</item>
     </style>
+
+
+    <style name="top_bar_title">
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/bleak_33</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
 </resources>

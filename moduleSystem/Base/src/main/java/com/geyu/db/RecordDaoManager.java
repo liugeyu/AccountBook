@@ -5,6 +5,8 @@ import com.geyu.database.ben.Record;
 
 import java.util.List;
 
+import io.reactivex.Observable;
+
 public class RecordDaoManager {
 
     public static void save(Record record) {
@@ -20,5 +22,9 @@ public class RecordDaoManager {
      */
     public static List<Record> find(int page,int limit) {
         return BaseApplication.getmDaoSession().getRecordDao().queryBuilder().offset(page * limit).limit(limit).list();
+    }
+
+    public static Observable<List<Record>> findRecords(int page,int limit) {
+        return Observable.just(find(page,limit));
     }
 }

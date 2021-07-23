@@ -1,5 +1,7 @@
 package com.geyu.base;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +12,18 @@ import java.io.Serializable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 public  class BaseFragment<D extends Serializable> extends Fragment {
 
     private static final String DATA_KEY = "DATA_KEY";
+    protected FragmentActivity mActivity;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        mActivity = (FragmentActivity) context;
+    }
 
     public static BaseFragment newInstance(Class<? extends BaseFragment> clazz) {
         try {

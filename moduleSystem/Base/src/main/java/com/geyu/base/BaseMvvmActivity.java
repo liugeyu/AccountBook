@@ -14,7 +14,14 @@ public abstract class BaseMvvmActivity<VM extends BaseViewModel,VDB extends View
 
         mDataBinding = DataBindingUtil.setContentView(this,laytId);
         mViewModel = ViewModelFactoryImpl.getInstance().createViewModel(this);
+        getLifecycle().addObserver(mViewModel);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
 
     @Override
     protected boolean isDataBinding() {

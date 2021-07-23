@@ -3,5 +3,6 @@
     package="com.geyu.home">
 
     <application>
+        <activity android:name=".ui.activity.Home_RecordEditActivity" />
     </application>
 </manifest>

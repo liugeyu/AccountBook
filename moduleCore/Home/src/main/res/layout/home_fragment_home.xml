@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="view"
+            type="com.geyu.home.ui.contract.Home_HomeContract.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,6 +42,7 @@
             android:layout_marginBottom="@dimen/dp_15"
             android:backgroundTint="#ffaabb"
             android:background="#ffaabb"
+            android:onClick="@{() -> view.addNewRecord()}"
             app:srcCompat="@drawable/ic_add_"
             app:layout_behavior="@string/fab_transformation_scrim_behavior"/>
 

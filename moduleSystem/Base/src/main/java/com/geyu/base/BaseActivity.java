@@ -2,10 +2,12 @@ package com.geyu.base;
 
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 
 import com.geyu.utils.ScreenManager;
 import com.geyu.utils.SystemBarTintManagerHelper;
 import com.geyu.utils.swipeWindowHelper.SwipeWindowHelper;
+import com.geyu.view.TopBar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +20,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     private CompositeDisposable compositeDisposable;
 
     private SwipeWindowHelper swipeWindowHelper;
+
+    private TopBar topBar;
 
     protected void addDisposable(Disposable disposable) {
         if (compositeDisposable == null || compositeDisposable.isDisposed()) {
@@ -38,6 +42,26 @@ public abstract class BaseActivity extends AppCompatActivity {
         initStarBar();
         initView();
         initData();
+    }
+
+    protected void initTopBar(TopBar topBar){
+        topBar.setBackClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBack();
+            }
+        });
+    }
+
+    protected void initTopBarAndTopPadding(TopBar topBar){
+        SystemBarTintManagerHelper.getInsatance().titleBarPaddingTop(topBar);
+        initTopBar(topBar);
+    }
+
+
+
+    protected void onBack(){
+        finish();
     }
 
     protected  void initStarBar() {
