@@ -6,5 +6,6 @@ public class Home_RecordEditContract {
 
     public static abstract class ViewModel extends BaseViewModel{
 
+        public abstract void saveOrUpdateRecord();
     }
 }

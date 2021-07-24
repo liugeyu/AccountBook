@@ -1,15 +1,16 @@
 package com.geyu.home.ui.activity;
 
+
 import com.geyu.base.Annotation.CreateViewModel;
 import com.geyu.base.BaseMvvmActivity;
+import com.geyu.callback.NumericKeypadConfirm;
+import com.geyu.database.ben.Record;
 import com.geyu.home.R;
 import com.geyu.home.databinding.HomeActivityRecordEditBinding;
 import com.geyu.home.ui.viewmodel.Home_RecordEditViewModel;
-import com.geyu.utils.SystemBarTintManagerHelper;
-import com.google.android.material.tabs.TabLayout;
 
 @CreateViewModel(Home_RecordEditViewModel.class)
-public class Home_RecordEditActivity extends BaseMvvmActivity<Home_RecordEditViewModel, HomeActivityRecordEditBinding> {
+public class Home_RecordEditActivity extends BaseMvvmActivity<Home_RecordEditViewModel, HomeActivityRecordEditBinding> implements NumericKeypadConfirm {
 
 
     @Override
@@ -22,13 +23,18 @@ public class Home_RecordEditActivity extends BaseMvvmActivity<Home_RecordEditVie
     protected void initView() {
         super.initView();
         initTopBarAndTopPadding(mDataBinding.topBar);
+        mDataBinding.numberKeypad.setEditText(mDataBinding.tvAmount);
 
-
+        mDataBinding.numberKeypad.setListener(this);
     }
 
     @Override
     protected void initData() {
         super.initData();
+    }
 
+    @Override
+    public void onConfirm() {
+        mViewModel.saveOrUpdateRecord();
     }
 }

@@ -6,6 +6,9 @@ import com.geyu.database.ben.Record;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.annotations.NonNull;
 
 public class RecordDaoManager {
 
@@ -25,6 +28,9 @@ public class RecordDaoManager {
     }
 
     public static Observable<List<Record>> findRecords(int page,int limit) {
-        return Observable.just(find(page,limit));
+        return Observable.create(emitter -> {
+            List<Record> data = find(page,limit);
+            emitter.onNext(data);
+        });
     }
 }

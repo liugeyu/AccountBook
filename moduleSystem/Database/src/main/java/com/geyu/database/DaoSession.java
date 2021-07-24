@@ -8,9 +8,13 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.identityscope.IdentityScopeType;
 import org.greenrobot.greendao.internal.DaoConfig;
 
+import com.geyu.database.ben.Account;
+import com.geyu.database.ben.CategoryModel;
 import com.geyu.database.ben.Record;
 import com.geyu.database.ben.Test;
 
+import com.geyu.database.AccountDao;
+import com.geyu.database.CategoryModelDao;
 import com.geyu.database.RecordDao;
 import com.geyu.database.TestDao;
 
@@ -23,9 +27,13 @@ import com.geyu.database.TestDao;
  */
 public class DaoSession extends AbstractDaoSession {
 
+    private final DaoConfig accountDaoConfig;
+    private final DaoConfig categoryModelDaoConfig;
     private final DaoConfig recordDaoConfig;
     private final DaoConfig testDaoConfig;
 
+    private final AccountDao accountDao;
+    private final CategoryModelDao categoryModelDao;
     private final RecordDao recordDao;
     private final TestDao testDao;
 
@@ -33,22 +41,42 @@ public class DaoSession extends AbstractDaoSession {
             daoConfigMap) {
         super(db);
 
+        accountDaoConfig = daoConfigMap.get(AccountDao.class).clone();
+        accountDaoConfig.initIdentityScope(type);
+
+        categoryModelDaoConfig = daoConfigMap.get(CategoryModelDao.class).clone();
+        categoryModelDaoConfig.initIdentityScope(type);
+
         recordDaoConfig = daoConfigMap.get(RecordDao.class).clone();
         recordDaoConfig.initIdentityScope(type);
 
         testDaoConfig = daoConfigMap.get(TestDao.class).clone();
         testDaoConfig.initIdentityScope(type);
 
+        accountDao = new AccountDao(accountDaoConfig, this);
+        categoryModelDao = new CategoryModelDao(categoryModelDaoConfig, this);
         recordDao = new RecordDao(recordDaoConfig, this);
         testDao = new TestDao(testDaoConfig, this);
 
+        registerDao(Account.class, accountDao);
+        registerDao(CategoryModel.class, categoryModelDao);
         registerDao(Record.class, recordDao);
         registerDao(Test.class, testDao);
     }
     
     public void clear() {
+        accountDaoConfig.clearIdentityScope();
+        categoryModelDaoConfig.clearIdentityScope();
         recordDaoConfig.clearIdentityScope();
         testDaoConfig.clearIdentityScope();
+    }
+
+    public AccountDao getAccountDao() {
+        return accountDao;
+    }
+
+    public CategoryModelDao getCategoryModelDao() {
+        return categoryModelDao;
     }
 
     public RecordDao getRecordDao() {
