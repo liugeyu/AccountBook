@@ -20,5 +20,5 @@ public  abstract class BaseViewHolder<VDB extends ViewDataBinding, T> extends Re
      *
      * @param data 数据
      */
-    protected abstract void bindData(T data, int position);
+    protected abstract void bindData(T data, int position,Object listener);
 }

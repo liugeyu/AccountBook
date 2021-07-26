@@ -14,4 +14,16 @@
     <string name="num_clean_to_0">清零</string>
     <string name="symbol_dot">.</string>
     <string name="ok">确定</string>
+
+
+    <string name="date_format_y_m_d_hh_mm">yyyy年MM月dd日 HH:mm</string>
+    <string name="date_format_y_m_d">yyyy年MM月dd日</string>
+    <string name="date_format_m_d">MM月dd日</string>
+    <string name="date_format_y_m">yyyy年MM月</string>
+    <string name="date_format_y">yyyy年</string>
+    <string name="date_format_today">今天</string>
+    <string name="date_format_today_time">今天 HH:mm</string>
+    <string name="date_format_yesterday">昨天</string>
+    <string name="date_format_date_format_yesterday_time">昨天 HH:mm</string>
+
 </resources>

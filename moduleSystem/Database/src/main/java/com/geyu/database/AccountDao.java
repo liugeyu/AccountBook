@@ -28,7 +28,8 @@ public class AccountDao extends AbstractDao<Account, Long> {
         public final static Property AccountName = new Property(1, String.class, "accountName", false, "ACCOUNT_NAME");
         public final static Property CreateTime = new Property(2, long.class, "createTime", false, "CREATE_TIME");
         public final static Property AccountId = new Property(3, long.class, "accountId", false, "ACCOUNT_ID");
-        public final static Property SyncStatus = new Property(4, int.class, "syncStatus", false, "SYNC_STATUS");
+        public final static Property AccountBookId = new Property(4, long.class, "accountBookId", false, "ACCOUNT_BOOK_ID");
+        public final static Property SyncStatus = new Property(5, int.class, "syncStatus", false, "SYNC_STATUS");
     }
 
 
@@ -48,7 +49,8 @@ public class AccountDao extends AbstractDao<Account, Long> {
                 "\"ACCOUNT_NAME\" TEXT," + // 1: accountName
                 "\"CREATE_TIME\" INTEGER NOT NULL ," + // 2: createTime
                 "\"ACCOUNT_ID\" INTEGER NOT NULL ," + // 3: accountId
-                "\"SYNC_STATUS\" INTEGER NOT NULL );"); // 4: syncStatus
+                "\"ACCOUNT_BOOK_ID\" INTEGER NOT NULL ," + // 4: accountBookId
+                "\"SYNC_STATUS\" INTEGER NOT NULL );"); // 5: syncStatus
     }
 
     /** Drops the underlying database table. */
@@ -72,7 +74,8 @@ public class AccountDao extends AbstractDao<Account, Long> {
         }
         stmt.bindLong(3, entity.getCreateTime());
         stmt.bindLong(4, entity.getAccountId());
-        stmt.bindLong(5, entity.getSyncStatus());
+        stmt.bindLong(5, entity.getAccountBookId());
+        stmt.bindLong(6, entity.getSyncStatus());
     }
 
     @Override
@@ -90,7 +93,8 @@ public class AccountDao extends AbstractDao<Account, Long> {
         }
         stmt.bindLong(3, entity.getCreateTime());
         stmt.bindLong(4, entity.getAccountId());
-        stmt.bindLong(5, entity.getSyncStatus());
+        stmt.bindLong(5, entity.getAccountBookId());
+        stmt.bindLong(6, entity.getSyncStatus());
     }
 
     @Override
@@ -105,7 +109,8 @@ public class AccountDao extends AbstractDao<Account, Long> {
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // accountName
             cursor.getLong(offset + 2), // createTime
             cursor.getLong(offset + 3), // accountId
-            cursor.getInt(offset + 4) // syncStatus
+            cursor.getLong(offset + 4), // accountBookId
+            cursor.getInt(offset + 5) // syncStatus
         );
         return entity;
     }
@@ -116,7 +121,8 @@ public class AccountDao extends AbstractDao<Account, Long> {
         entity.setAccountName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setCreateTime(cursor.getLong(offset + 2));
         entity.setAccountId(cursor.getLong(offset + 3));
-        entity.setSyncStatus(cursor.getInt(offset + 4));
+        entity.setAccountBookId(cursor.getLong(offset + 4));
+        entity.setSyncStatus(cursor.getInt(offset + 5));
      }
     
     @Override

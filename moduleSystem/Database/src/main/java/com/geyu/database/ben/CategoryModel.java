@@ -3,6 +3,8 @@ package com.geyu.database.ben;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Transient;
 
 @Entity
 public class CategoryModel {
@@ -10,6 +12,8 @@ public class CategoryModel {
     public static final int TYPE_EXPENSE = 0;
 
     public static final int TYPE_INCOME = 1;
+    @Transient
+    public boolean isSelect;
 
     /** 分类记录 ID */
     @Id
@@ -25,20 +29,26 @@ public class CategoryModel {
     private String icon = "";
 
     /** 排序 */
+    @Property(nameInDb = "_ORDER")
     private int order;
-
+//
     /** 分类类型 */
     private int type;
-
-    /** 用户 ID */
+//
+    /** 账户 ID */
     private long accountId;
+    /**
+     * 账本id
+     */
+    private long accountBookId;
 
     /** 同步状态 */
     private int syncStatus;
 
-    @Generated(hash = 196214191)
+    @Generated(hash = 740333325)
     public CategoryModel(Long id, String uniqueName, String name, String icon,
-            int order, int type, long accountId, int syncStatus) {
+            int order, int type, long accountId, long accountBookId,
+            int syncStatus) {
         this.id = id;
         this.uniqueName = uniqueName;
         this.name = name;
@@ -46,6 +56,7 @@ public class CategoryModel {
         this.order = order;
         this.type = type;
         this.accountId = accountId;
+        this.accountBookId = accountBookId;
         this.syncStatus = syncStatus;
     }
 
@@ -109,6 +120,14 @@ public class CategoryModel {
         this.accountId = accountId;
     }
 
+    public long getAccountBookId() {
+        return this.accountBookId;
+    }
+
+    public void setAccountBookId(long accountBookId) {
+        this.accountBookId = accountBookId;
+    }
+
     public int getSyncStatus() {
         return this.syncStatus;
     }
@@ -116,4 +135,6 @@ public class CategoryModel {
     public void setSyncStatus(int syncStatus) {
         this.syncStatus = syncStatus;
     }
+
+
 }

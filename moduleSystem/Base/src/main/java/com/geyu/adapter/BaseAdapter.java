@@ -18,6 +18,10 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
     protected List<T> datas = new ArrayList<>();
     protected LayoutInflater layoutInflater;
 
+    protected Object o;
+    public void setListener(Object o){
+        this.o = o;
+    }
     public BaseAdapter(Context context) {
         layoutInflater = LayoutInflater.from(context);
     }
@@ -29,6 +33,11 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
             this.datas.addAll(datas);
             notifyDataSetChanged();
         }
+    }
+
+
+    public List<T> getDatas() {
+        return datas;
     }
 
     public void addDatas(List<T> datas){
@@ -50,7 +59,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
-        holder.bindData(datas.get(position),position);
+        holder.bindData(datas.get(position),position,o);
     }
 
     @Override

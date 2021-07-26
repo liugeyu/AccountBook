@@ -14,6 +14,10 @@ public class Record {
 
     /** 账户 ID */
     private long accountId;
+    /**
+     * 账本id
+     */
+    private long accountBookId;
 
     /** 记录时间（UNIX TIME） */
     private long time;
@@ -42,12 +46,13 @@ public class Record {
     /** 记录类型 */
     private int type;
 
-    @Generated(hash = 785630520)
-    public Record(Long id, long accountId, long time, String categoryUniqueName,
-            String categoryName, String categoryIcon, long amount, String desc,
-            String syncId, int syncStatus, int type) {
+    @Generated(hash = 1201817292)
+    public Record(Long id, long accountId, long accountBookId, long time,
+            String categoryUniqueName, String categoryName, String categoryIcon,
+            long amount, String desc, String syncId, int syncStatus, int type) {
         this.id = id;
         this.accountId = accountId;
+        this.accountBookId = accountBookId;
         this.time = time;
         this.categoryUniqueName = categoryUniqueName;
         this.categoryName = categoryName;
@@ -77,6 +82,14 @@ public class Record {
 
     public void setAccountId(long accountId) {
         this.accountId = accountId;
+    }
+
+    public long getAccountBookId() {
+        return this.accountBookId;
+    }
+
+    public void setAccountBookId(long accountBookId) {
+        this.accountBookId = accountBookId;
     }
 
     public long getTime() {
@@ -150,5 +163,6 @@ public class Record {
     public void setType(int type) {
         this.type = type;
     }
+
 
 }

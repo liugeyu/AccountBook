@@ -52,4 +52,5 @@ dependencies {
 
     implementation project(path: ':moduleSystem:Base')
     annotationProcessor rootProject.dependenciesJar.aroutercompiler
+    implementation rootProject.dependenciesJar.MPAndroidChart
 }

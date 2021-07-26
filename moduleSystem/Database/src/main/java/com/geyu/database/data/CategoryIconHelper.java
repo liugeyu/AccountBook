@@ -1,5 +1,7 @@
 package com.geyu.database.data;
 
+import com.geyu.database.R;
+
 public class CategoryIconHelper {
     /** 其他 */
     public static final String IC_NAME_OTHER = "Other";
@@ -7,7 +9,7 @@ public class CategoryIconHelper {
     public static final String IC_NAME_CAN_YIN = "CanYin";
     /** 交通 */
     public static final String IC_NAME_JIAO_TONG = "JiaoTong";
-    /** 住房 */
+    /** 购物 */
     public static final String IC_NAME_GOU_WU = "GouWu";
     /** 服饰 */
     public static final String IC_NAME_FU_SHI = "FuShi";

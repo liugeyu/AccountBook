@@ -16,4 +16,8 @@
     <color name="color_ripple">#1f000000</color>
     <color name="warning">#E53935</color>
 
+
+    <color name="category_expense_selected">#FFE3AA</color>
+    <color name="category_expense_normal">#08000000</color>
+
 </resources>

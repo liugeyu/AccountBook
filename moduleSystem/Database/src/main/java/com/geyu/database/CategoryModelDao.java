@@ -28,10 +28,11 @@ public class CategoryModelDao extends AbstractDao<CategoryModel, Long> {
         public final static Property UniqueName = new Property(1, String.class, "uniqueName", false, "UNIQUE_NAME");
         public final static Property Name = new Property(2, String.class, "name", false, "NAME");
         public final static Property Icon = new Property(3, String.class, "icon", false, "ICON");
-        public final static Property Order = new Property(4, int.class, "order", false, "ORDER");
+        public final static Property Order = new Property(4, int.class, "order", false, "_ORDER");
         public final static Property Type = new Property(5, int.class, "type", false, "TYPE");
         public final static Property AccountId = new Property(6, long.class, "accountId", false, "ACCOUNT_ID");
-        public final static Property SyncStatus = new Property(7, int.class, "syncStatus", false, "SYNC_STATUS");
+        public final static Property AccountBookId = new Property(7, long.class, "accountBookId", false, "ACCOUNT_BOOK_ID");
+        public final static Property SyncStatus = new Property(8, int.class, "syncStatus", false, "SYNC_STATUS");
     }
 
 
@@ -51,10 +52,11 @@ public class CategoryModelDao extends AbstractDao<CategoryModel, Long> {
                 "\"UNIQUE_NAME\" TEXT," + // 1: uniqueName
                 "\"NAME\" TEXT," + // 2: name
                 "\"ICON\" TEXT," + // 3: icon
-                "\"ORDER\" INTEGER NOT NULL ," + // 4: order
+                "\"_ORDER\" INTEGER NOT NULL ," + // 4: order
                 "\"TYPE\" INTEGER NOT NULL ," + // 5: type
                 "\"ACCOUNT_ID\" INTEGER NOT NULL ," + // 6: accountId
-                "\"SYNC_STATUS\" INTEGER NOT NULL );"); // 7: syncStatus
+                "\"ACCOUNT_BOOK_ID\" INTEGER NOT NULL ," + // 7: accountBookId
+                "\"SYNC_STATUS\" INTEGER NOT NULL );"); // 8: syncStatus
     }
 
     /** Drops the underlying database table. */
@@ -89,7 +91,8 @@ public class CategoryModelDao extends AbstractDao<CategoryModel, Long> {
         stmt.bindLong(5, entity.getOrder());
         stmt.bindLong(6, entity.getType());
         stmt.bindLong(7, entity.getAccountId());
-        stmt.bindLong(8, entity.getSyncStatus());
+        stmt.bindLong(8, entity.getAccountBookId());
+        stmt.bindLong(9, entity.getSyncStatus());
     }
 
     @Override
@@ -118,7 +121,8 @@ public class CategoryModelDao extends AbstractDao<CategoryModel, Long> {
         stmt.bindLong(5, entity.getOrder());
         stmt.bindLong(6, entity.getType());
         stmt.bindLong(7, entity.getAccountId());
-        stmt.bindLong(8, entity.getSyncStatus());
+        stmt.bindLong(8, entity.getAccountBookId());
+        stmt.bindLong(9, entity.getSyncStatus());
     }
 
     @Override
@@ -136,7 +140,8 @@ public class CategoryModelDao extends AbstractDao<CategoryModel, Long> {
             cursor.getInt(offset + 4), // order
             cursor.getInt(offset + 5), // type
             cursor.getLong(offset + 6), // accountId
-            cursor.getInt(offset + 7) // syncStatus
+            cursor.getLong(offset + 7), // accountBookId
+            cursor.getInt(offset + 8) // syncStatus
         );
         return entity;
     }
@@ -150,7 +155,8 @@ public class CategoryModelDao extends AbstractDao<CategoryModel, Long> {
         entity.setOrder(cursor.getInt(offset + 4));
         entity.setType(cursor.getInt(offset + 5));
         entity.setAccountId(cursor.getLong(offset + 6));
-        entity.setSyncStatus(cursor.getInt(offset + 7));
+        entity.setAccountBookId(cursor.getLong(offset + 7));
+        entity.setSyncStatus(cursor.getInt(offset + 8));
      }
     
     @Override

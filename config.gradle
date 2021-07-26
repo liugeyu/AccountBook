@@ -29,6 +29,7 @@ ext{
             "multidex"          : 'androidx.multidex:multidex:2.0.1',
             "immersionbar"      : 'com.gyf.immersionbar:immersionbar:3.0.0',
             "eventbus"          : 'org.greenrobot:eventbus:3.0.0',
+            "MPAndroidChart"          : 'com.github.PhilJay:MPAndroidChart:v3.1.0',
 
     ]
 }

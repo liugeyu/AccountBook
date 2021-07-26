@@ -47,7 +47,6 @@ public class Home_HomeFragment extends BaseMvvmFragment<Home_HomeViewModel, Home
     @Override
     protected void initData() {
         super.initData();
-        mViewModel.getHomeData();
         mViewModel.getRecord().observe(this, records -> {
             adapter.setDatas(records);
         });

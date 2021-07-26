@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.inputmethodservice.KeyboardView;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.geyu.base.databinding.ItemKeypadBinding;
 import com.geyu.base.databinding.NumericKeypadBinding;
 import com.geyu.callback.NumericKeypadConfirm;
 import com.geyu.database.ben.Keypad;
+import com.geyu.utils.AmountUtil;
 
 import org.w3c.dom.Text;
 
@@ -68,8 +70,10 @@ public class NumericKeypad extends FrameLayout {
 
         if (sb.indexOf("0") == 0 && sb.length() == 1) {
 
-        }else {
-            sb.append(num);
+        } else {
+            if (AmountUtil.validAmount(sb.toString() + num)) {
+                sb.append(num);
+            }
         }
         setText();
     }
@@ -97,7 +101,11 @@ public class NumericKeypad extends FrameLayout {
 
     private void setText(){
         if (editText != null) {
-            editText.setText(sb.toString());
+            if (sb.length() > 0) {
+                editText.setText(sb.toString());
+            } else {
+                editText.setText("0.00");
+            }
         }
     }
 }

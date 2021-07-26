@@ -33,9 +33,10 @@ public class Home_HomeAdapter extends BaseAdapter<Record> {
         }
 
         @Override
-        protected void bindData(Record data, int position) {
+        protected void bindData(Record data, int position,Object listener) {
             mBinding.setVariable(BR.itemData,data);
             mBinding.setVariable(BR.itemPosition,position);
+            mBinding.setVariable(BR.listener,listener);
             mBinding.executePendingBindings();
         }
     }
