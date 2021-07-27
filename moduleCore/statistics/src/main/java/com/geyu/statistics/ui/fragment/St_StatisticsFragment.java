@@ -7,10 +7,13 @@ import com.geyu.Constant;
 import com.geyu.base.Annotation.CreateViewModel;
 import com.geyu.base.BaseMvvmFragment;
 import com.geyu.database.ben.CategoryModel;
+import com.geyu.database.ben.RecordGroup;
 import com.geyu.db.CategroyManager;
+import com.geyu.db.RecordDaoManager;
 import com.geyu.statistics.R;
 import com.geyu.statistics.databinding.StFragmentStatistivsBinding;
 import com.geyu.statistics.ui.viewmodel.St_StatisticsViewModel;
+import com.geyu.utils.LLOG;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
@@ -28,6 +31,7 @@ import java.util.List;
 
 import io.reactivex.ObservableSource;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 
 @Route(path = Constant.StatisticsClass.FRAGMENT_STATISTICS)
@@ -53,6 +57,7 @@ public class St_StatisticsFragment extends BaseMvvmFragment<St_StatisticsViewMod
         initChat();
     }
 
+
     private void initChat() {
         mDataBinding.pieChart.setUsePercentValues(true);
         mDataBinding.pieChart.getDescription().setEnabled(false);
@@ -74,13 +79,13 @@ public class St_StatisticsFragment extends BaseMvvmFragment<St_StatisticsViewMod
 
         mDataBinding.pieChart.setDrawCenterText(true);
 
-        mDataBinding.pieChart.setRotationAngle(0);
+//        mDataBinding.pieChart.setRotationAngle(0);
         // enable rotation of the chart by touch
-        mDataBinding.pieChart.setRotationEnabled(true);
+//        mDataBinding.pieChart.setRotationEnabled(true);
         mDataBinding.pieChart.setHighlightPerTapEnabled(true);
 
-        // chart.setUnit(" €");
-        // chart.setDrawUnitsInChart(true);
+//         chart.setUnit(" €");
+//         chart.setDrawUnitsInChart(true);
 
         // add a selection listener
         mDataBinding.pieChart.setOnChartValueSelectedListener(this);
@@ -105,23 +110,17 @@ public class St_StatisticsFragment extends BaseMvvmFragment<St_StatisticsViewMod
     }
 
 
-    private void setData(int count, float range) {
+    private void setData(List<RecordGroup> recordGroups) {
 
-        CategroyManager.findAll(CategoryModel.TYPE_EXPENSE)
-                .flatMap(new Function<List<CategoryModel>, ObservableSource<?>>() {
-                    @Override
-                    public ObservableSource<?> apply(@NonNull List<CategoryModel> categoryModels) throws Exception {
-                        return null;
-                    }
-                });
 
         ArrayList<PieEntry> entries = new ArrayList<>();
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
-        for (int i = 0; i < count ; i++) {
-            entries.add(new PieEntry((float) ((Math.random() * range) + range / 5),
-                    parties[i % parties.length]));
+        for (int i = 0; i < recordGroups.size() ; i++) {
+            RecordGroup recordGroup = recordGroups.get(i);
+            entries.add(new PieEntry(recordGroup.sumAmount,
+                    recordGroup.categoryName));
         }
 
         PieDataSet dataSet = new PieDataSet(entries, "Election Results");
@@ -171,8 +170,9 @@ public class St_StatisticsFragment extends BaseMvvmFragment<St_StatisticsViewMod
     @Override
     protected void initData() {
         super.initData();
-
-        setData(4,4);
+        mViewModel.getRecordGroup().observe(this,recordGroups -> {
+            setData(recordGroups);
+        });
     }
 
     @Override

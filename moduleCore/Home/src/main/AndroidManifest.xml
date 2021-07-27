@@ -4,5 +4,6 @@
 
     <application>
         <activity android:name=".ui.activity.Home_RecordEditActivity" />
+        <activity android:name=".ui.activity.Home_recordDetailActivity" />
     </application>
 </manifest>

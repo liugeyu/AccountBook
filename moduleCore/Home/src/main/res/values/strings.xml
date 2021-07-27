@@ -6,4 +6,8 @@
         <item>日常2222</item>
     </array>
     <string name="test">test2</string>
+    <string name="detail">详情</string>
+    <string name="remark">备注</string>
+    <string name="time">时间</string>
+    <string name="modify">修改</string>
 </resources>

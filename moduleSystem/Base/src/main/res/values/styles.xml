@@ -52,4 +52,8 @@
         <item name="android:textColor">@color/bleak_33</item>
         <item name="android:layout_gravity">center</item>
     </style>
+    
+    <style name="text_medium_label" parent="text_size_medium">
+        <item name="android:textColor">@color/black_50</item>
+    </style>
 </resources>

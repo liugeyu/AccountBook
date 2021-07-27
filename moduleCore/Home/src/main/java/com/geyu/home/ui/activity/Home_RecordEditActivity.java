@@ -14,7 +14,9 @@ import com.geyu.home.databinding.HomeActivityRecordEditBinding;
 import com.geyu.home.ui.adapter.CategoryAdapter;
 import com.geyu.home.ui.contract.Home_RecordEditContract;
 import com.geyu.home.ui.viewmodel.Home_RecordEditViewModel;
+import com.geyu.utils.AmountUtil;
 import com.geyu.utils.LLOG;
+import com.geyu.utils.ToActivity;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -25,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 @CreateViewModel(Home_RecordEditViewModel.class)
 public class Home_RecordEditActivity extends BaseMvvmActivity<Home_RecordEditViewModel, HomeActivityRecordEditBinding> implements NumericKeypadConfirm, Home_RecordEditContract.View {
 
+    private Record oldRecord;
 
     private CategoryAdapter adapter;
     PagerSnapHelper pagerSnapHelper;
@@ -61,30 +64,54 @@ public class Home_RecordEditActivity extends BaseMvvmActivity<Home_RecordEditVie
     }
 
     public void categoryItemClick(CategoryModel item,int position) {
+//        for (CategoryModel data : adapter.getDatas()) {
+//            if (data.getUniqueName().equals(item.getUniqueName())) {
+//                data.isSelect = true;
+//            } else {
+//                data.isSelect = false;
+//            }
+//        }
+//        mDataBinding.setItemData(item);
+//        adapter.notifyDataSetChanged();
+        selectedItem(item.getUniqueName());
+    }
+
+    public void selectedItem(String uniqueName) {
         for (CategoryModel data : adapter.getDatas()) {
-            if (data == item) {
+            if (data.getUniqueName().equals(uniqueName)) {
                 data.isSelect = true;
+                mDataBinding.setItemData(data);
             } else {
                 data.isSelect = false;
             }
         }
-        mDataBinding.setItemData(item);
+
         adapter.notifyDataSetChanged();
     }
     @Override
     protected void initData() {
         super.initData();
+        oldRecord = (Record) getIntent().getSerializableExtra(ToActivity.serializabkeKey);
        mViewModel.getCategoryData().observe(this, categoryModels -> {
            adapter.setDatas(categoryModels);
            if (categoryModels != null && categoryModels.size() > 0 ) {
-               categoryItemClick(categoryModels.get(0),0);
+               if (oldRecord != null) {
+                   selectedItem(oldRecord.getCategoryUniqueName());
+                   mDataBinding.setRecord(oldRecord);
+               } else {
+                   categoryItemClick(categoryModels.get(0),0);
+               }
            }
        });
     }
 
     @Override
     public void onConfirm() {
-        mViewModel.saveOrUpdateRecord(mDataBinding.tvAmount.getText().toString(),adapter.getSelect());
+        if (AmountUtil.amtToCent(mDataBinding.tvAmount.getText().toString().replace("¥:","").trim()) <= 0) {
+            showErrMessage("请输入金额");
+            return;
+        }
+        mViewModel.saveOrUpdateRecord(mDataBinding.tvAmount.getText().toString().replace("¥:","").trim(),adapter.getSelect(),oldRecord);
         onBack();
     }
 

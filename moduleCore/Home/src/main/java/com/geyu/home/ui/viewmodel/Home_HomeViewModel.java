@@ -6,6 +6,7 @@ import com.geyu.database.ben.Record;
 import com.geyu.db.RecordDaoManager;
 import com.geyu.home.ui.contract.Home_HomeContract;
 import com.geyu.rx.RxSchedulersHelper;
+import com.geyu.utils.ErrHandler;
 import com.geyu.utils.LLOG;
 import com.geyu.utils.ToActivity;
 
@@ -25,14 +26,19 @@ public class Home_HomeViewModel extends Home_HomeContract.ViewMode {
 
 
     private MutableLiveData<List<Record>> homeDatas = new MutableLiveData();
+    private MutableLiveData<List<Record>> loadMore = new MutableLiveData();
+    private int page = 0;
+    private final int pageSize = 20;
 
 
     private void getHomeData(){
-        Disposable disposable = RecordDaoManager.findRecords(0,20)
+        page = 0;
+        Disposable disposable = RecordDaoManager.findRecords(page,pageSize)
                 .compose(RxSchedulersHelper.applyIoTransformer())
                 .subscribe((rs) ->{
                     homeDatas.setValue(rs);
                 },throwable -> {
+                    showErrMessage(ErrHandler.getErrMsg(throwable));
                 });
         addDisposable(disposable);
     }
@@ -58,5 +64,28 @@ public class Home_HomeViewModel extends Home_HomeContract.ViewMode {
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void refresh() {
+        getHomeData();
+    }
+
+    @Override
+    public void loadMore() {
+        page ++;
+        Disposable disposable = RecordDaoManager.findRecords(page,pageSize)
+                .compose(RxSchedulersHelper.applyIoTransformer())
+                .subscribe((rs) ->{
+                    loadMore.setValue(rs);
+                },throwable -> {
+                    showErrMessage(ErrHandler.getErrMsg(throwable));
+                });
+        addDisposable(disposable);
+    }
+
+    @Override
+    public MutableLiveData<List<Record>> getLoadMore() {
+        return loadMore;
     }
 }

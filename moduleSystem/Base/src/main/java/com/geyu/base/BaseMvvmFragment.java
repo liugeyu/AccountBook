@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.geyu.utils.ToastUtil;
+
 import java.io.Serializable;
 
 import androidx.annotation.NonNull;
@@ -24,9 +26,16 @@ public abstract class BaseMvvmFragment<VM extends BaseViewModel,VDB extends View
         mDataBinding = DataBindingUtil.inflate(inflater,getLayoutId(),container,false);
         mViewModel = ViewModelFactoryImpl.getInstance().createViewModel(this);
         getLifecycle().addObserver(mViewModel);
+        initErrMsg();
         return mDataBinding.getRoot();
     }
+    protected  void initErrMsg() {
+        mViewModel.getErrMessage().observe(getViewLifecycleOwner(), this::showErrMessage);
+    }
 
+    protected void showErrMessage(String errMsg){
+        ToastUtil.showToast(errMsg);
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

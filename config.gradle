@@ -30,6 +30,9 @@ ext{
             "immersionbar"      : 'com.gyf.immersionbar:immersionbar:3.0.0',
             "eventbus"          : 'org.greenrobot:eventbus:3.0.0',
             "MPAndroidChart"          : 'com.github.PhilJay:MPAndroidChart:v3.1.0',
+            "refresh_layout_kernel"   : 'com.scwang.smart:refresh-layout-kernel:2.0.3',
+            "refresh_header_classics" : 'com.scwang.smart:refresh-header-classics:2.0.3',
+            "refresh_footer_classics" : 'com.scwang.smart:refresh-footer-classics:2.0.3',
 
     ]
 }

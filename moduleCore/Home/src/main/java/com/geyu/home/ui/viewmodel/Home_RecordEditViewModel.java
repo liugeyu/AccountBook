@@ -23,17 +23,25 @@ public class Home_RecordEditViewModel extends Home_RecordEditContract.ViewModel 
     MutableLiveData<List<CategoryModel>> categoryList = new MutableLiveData<>();
 
     @Override
-    public void saveOrUpdateRecord(String amt, CategoryModel categoryModel) {
-        Record record = new Record();
-        record.setAmount(AmountUtil.amtToCent(amt));
-        record.setAccountId(AccountManager.getAccountId());
-        record.setTime(System.currentTimeMillis());
-        record.setAccountBookId(AccountBookManager.getAccountBookId());
-        record.setCategoryIcon(categoryModel.getIcon());
-        record.setCategoryName(categoryModel.getName());
-        record.setCategoryUniqueName(categoryModel.getUniqueName());
-        record.setSyncId(StringUtils.getUuid());
-        RecordDaoManager.save(record);
+    public void saveOrUpdateRecord(String amt, CategoryModel categoryModel, Record oldRecord) {
+        if (oldRecord == null){
+            oldRecord = new Record();
+            oldRecord.setAmount(AmountUtil.amtToCent(amt));
+            oldRecord.setAccountId(AccountManager.getAccountId());
+            oldRecord.setTime(System.currentTimeMillis());
+            oldRecord.setAccountBookId(AccountBookManager.getAccountBookId());
+            oldRecord.setCategoryIcon(categoryModel.getIcon());
+            oldRecord.setCategoryName(categoryModel.getName());
+            oldRecord.setCategoryUniqueName(categoryModel.getUniqueName());
+            oldRecord.setSyncId(StringUtils.getUuid());
+        } else {
+            oldRecord.setAmount(AmountUtil.amtToCent(amt));
+            oldRecord.setCategoryIcon(categoryModel.getIcon());
+            oldRecord.setCategoryName(categoryModel.getName());
+            oldRecord.setCategoryUniqueName(categoryModel.getUniqueName());
+        }
+
+        RecordDaoManager.saveOrUpdate(oldRecord);
         EventBus.getDefault().post(new RecordChanager());
     }
 

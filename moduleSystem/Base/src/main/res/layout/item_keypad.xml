@@ -8,9 +8,6 @@
         <variable
             name="numericKeypad"
             type="com.geyu.view.NumericKeypad" />
-        <variable
-            name="itemData"
-            type="com.geyu.database.ben.Keypad" />
 
         <variable
             name="itemPosition"
@@ -32,7 +29,6 @@
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/dp_15"
             android:layout_marginBottom="@dimen/dp_15"
-            android:text="@{itemData.key}"
             tools:text="1"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

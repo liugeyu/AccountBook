@@ -3,12 +3,17 @@ package com.geyu.database.ben;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Transient;
+
+import java.io.Serializable;
 
 /**
  * 记录
  */
 @Entity
-public class Record {
+public class Record implements Serializable {
+    @Transient
+    private static final long serialVersionUID = -4683833882623657815L;
     @Id
     private Long id;
 

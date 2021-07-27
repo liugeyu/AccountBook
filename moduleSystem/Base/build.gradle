@@ -44,6 +44,9 @@ dependencies {
     api rootProject.dependenciesJar.multidex
     api rootProject.dependenciesJar.immersionbar
     api rootProject.dependenciesJar.eventbus
+    api rootProject.dependenciesJar.refresh_layout_kernel
+    api rootProject.dependenciesJar.refresh_header_classics
+    api rootProject.dependenciesJar.refresh_footer_classics
     api project(path: ':moduleSystem:Database')
 
 }

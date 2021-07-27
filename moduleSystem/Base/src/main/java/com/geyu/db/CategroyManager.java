@@ -2,9 +2,12 @@ package com.geyu.db;
 
 import com.geyu.base.BaseApplication;
 import com.geyu.database.CategoryModelDao;
+import com.geyu.database.RecordDao;
 import com.geyu.database.ben.CategoryModel;
 import com.geyu.database.ben.Record;
 import com.geyu.rx.RxSchedulersHelper;
+
+import org.greenrobot.greendao.query.WhereCondition;
 
 import java.util.List;
 
@@ -22,4 +25,8 @@ public class CategroyManager {
     public static List<CategoryModel> find(int type) {
         return BaseApplication.getmDaoSession().getCategoryModelDao().queryBuilder().where(CategoryModelDao.Properties.Type.eq(type)).list();
     }
+
+//    public static void test(){
+//        BaseApplication.getmDaoSession().getDatabase().execSQL();
+//    }
 }

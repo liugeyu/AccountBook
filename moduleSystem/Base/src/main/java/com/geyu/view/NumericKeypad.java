@@ -1,37 +1,20 @@
 package com.geyu.view;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.inputmethodservice.KeyboardView;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
-import com.geyu.adapter.BaseAdapter;
-import com.geyu.adapter.BaseViewHolder;
 import com.geyu.base.R;
-import com.geyu.base.databinding.ItemKeypadBinding;
 import com.geyu.base.databinding.NumericKeypadBinding;
 import com.geyu.callback.NumericKeypadConfirm;
-import com.geyu.database.ben.Keypad;
 import com.geyu.utils.AmountUtil;
+import com.geyu.utils.DataBindingUtils;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class NumericKeypad extends FrameLayout {
 
@@ -102,9 +85,9 @@ public class NumericKeypad extends FrameLayout {
     private void setText(){
         if (editText != null) {
             if (sb.length() > 0) {
-                editText.setText(sb.toString());
+                DataBindingUtils.setAmount(editText,AmountUtil.amtToCent(sb.toString()));
             } else {
-                editText.setText("0.00");
+                DataBindingUtils.setAmount(editText,AmountUtil.amtToCent("0.00"));
             }
         }
     }

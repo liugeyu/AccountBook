@@ -26,12 +26,13 @@
                 android:text="账本"/>
         </androidx.appcompat.widget.Toolbar>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.geyu.view.BaseRefreshLayout
             android:id="@+id/rv"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_0"/>
+            android:layout_height="@dimen/dp_0"
+            />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"

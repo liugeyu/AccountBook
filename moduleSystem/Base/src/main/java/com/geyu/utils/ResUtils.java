@@ -33,6 +33,10 @@ public class ResUtils {
         return context.getResources().getString(strId, formatArgs);
     }
 
+    public static int getColor(@ColorRes int colorResId) {
+        return getColor(BaseApplication.getContext(),colorResId);
+    }
+
     public static int getColor(Context context, @ColorRes int colorResId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return context.getColor(colorResId);

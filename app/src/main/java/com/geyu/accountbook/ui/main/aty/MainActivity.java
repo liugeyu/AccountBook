@@ -14,6 +14,9 @@ import com.geyu.accountbook.ui.main.viewmodel.MainViewModel;
 import com.geyu.base.Annotation.CreateViewModel;
 import com.geyu.base.BaseFragment;
 import com.geyu.base.BaseMvvmActivity;
+import com.geyu.database.RecordDao;
+import com.geyu.database.ben.CategoryModel;
+import com.geyu.db.RecordDaoManager;
 import com.geyu.utils.LLOG;
 import com.geyu.utils.SystemBarTintManagerHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -25,6 +28,8 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import io.reactivex.disposables.Disposable;
+
 @Route(path = Constant.MainClass.ACTIVITY_MAIN)
 @CreateViewModel(MainViewModel.class)
 public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBinding> implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -45,7 +50,6 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBi
 
     @Override
     protected void initView() {
-
         SystemBarTintManagerHelper.getInsatance().titleBarPaddingTop(mDataBinding.container);
 
         mDataBinding.navView.setOnNavigationItemSelectedListener(this);

@@ -47,7 +47,7 @@ public class TopBar extends FrameLayout {
         tvTitle = findViewById(R.id.title);
         mToolbar = findViewById(R.id.tool_baar);
         tvTitle.setText(title);
-        mToolbar.setNavigationIcon(leftImgId);
+
 //        findViewById(R.id.iv_back).setOnClickListener(this);
     }
 
@@ -62,6 +62,7 @@ public class TopBar extends FrameLayout {
 
 
     public void setBackClickListener(View.OnClickListener listener) {
+        mToolbar.setNavigationIcon(leftImgId);
        mToolbar.setNavigationOnClickListener(listener);
     }
 

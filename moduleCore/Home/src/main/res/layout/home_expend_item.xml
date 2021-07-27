@@ -12,6 +12,10 @@
         <variable
             name="itemPosition"
             type="Integer" />
+
+        <variable
+            name="listener"
+            type="com.geyu.home.ui.contract.Home_HomeContract.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,6 +23,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/dp_10"
         android:paddingRight="@dimen/dp_10"
+        android:onClick="@{() -> listener.onItemClick(itemData,itemPosition)}"
         >
 
         <FrameLayout

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="page_background_color">#f6f6f6</color> <!--页面背景颜色 #f5f7f9-->
     <color name="transparent">#00000000</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -10,7 +11,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="bleak_33">#333333</color>
-
+    <color name="black_50">#505050</color>
     <color name="gray_e9">#E9E9E9</color>
     <!-- 点击涟漪背景色 -->
     <color name="color_ripple">#1f000000</color>
@@ -20,4 +21,9 @@
     <color name="category_expense_selected">#FFE3AA</color>
     <color name="category_expense_normal">#08000000</color>
 
+    <color name="appTextColorPrimary">#ff3e3e3e</color>
+    <color name="appTextColorSecondary">#ff666666</color>
+    <color name="appTextColorThird">#ff9b9b9b</color>
+
+    <color name="shadow_color">#9ED3D6D7</color>
 </resources>
