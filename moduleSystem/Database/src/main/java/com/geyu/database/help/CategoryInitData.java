@@ -40,4 +40,29 @@ class CategoryInitData {
         categoryItem.type = CategoryModel.TYPE_EXPENSE;
         return categoryItem;
     }
+
+    /**
+     * 获取收入初始化类型
+     */
+    static List<CategoryItem> getIncomeInitData (){
+        List<CategoryItem> datas = new ArrayList<>();
+
+        datas.add(getIncomeItem(CategoryConstant.NAME_OTHER_IN_COME,"其他",CategoryIconHelper.IC_NAME_OTHER));
+        datas.add(getIncomeItem(CategoryConstant.NAME_XIN_ZI,"薪资",CategoryIconHelper.IC_NAME_XIN_ZI));
+        datas.add(getIncomeItem(CategoryConstant.NAME_JIANG_JIN,"奖金",CategoryIconHelper.IC_NAME_JIANG_JIN));
+        datas.add(getIncomeItem(CategoryConstant.NAME_JIE_RU,"借入",CategoryIconHelper.IC_NAME_JIE_RU));
+        datas.add(getIncomeItem(CategoryConstant.NAME_SHOU_ZHAI,"收债",CategoryIconHelper.IC_NAME_SHOU_ZHAI));
+        datas.add(getIncomeItem(CategoryConstant.NAME_LI_XIN_SHOU_RU,"利息",CategoryIconHelper.IC_NAME_LI_XIN_SHOU_RU));
+        datas.add(getIncomeItem(CategoryConstant.NAME_TOU_ZI_HUI_SHOU,"投资回收",CategoryIconHelper.IC_NAME_TOU_ZI_HUI_SHOU));
+        datas.add(getIncomeItem(CategoryConstant.NAME_YI_WAI_SUO_DE,"意外所得",CategoryIconHelper.IC_NAME_YI_WAI_SUO_DE));
+        datas.add(getIncomeItem(CategoryConstant.NAME_TOU_ZI_SHOU_YI,"投资收益",CategoryIconHelper.IC_NAME_TOU_ZI_SHOU_YI));
+
+        return datas;
+    }
+
+    private static CategoryItem getIncomeItem(String uniqueName, String name, String icon){
+        CategoryItem categoryItem = new CategoryItem(uniqueName,name,icon);
+        categoryItem.type = CategoryModel.TYPE_INCOME;
+        return categoryItem;
+    }
 }

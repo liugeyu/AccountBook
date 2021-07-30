@@ -69,4 +69,10 @@ public  class BaseFragment<D extends Serializable> extends Fragment {
 
     protected void initView() {
     }
+
+    protected void onBack(){
+        if (mActivity!= null && mActivity instanceof BaseActivity) {
+            ((BaseActivity) mActivity).onBack();
+        }
+    }
 }

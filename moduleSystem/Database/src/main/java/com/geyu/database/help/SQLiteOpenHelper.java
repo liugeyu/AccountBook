@@ -48,6 +48,24 @@ public class SQLiteOpenHelper extends DaoMaster.OpenHelper{
                     ") VALUES("+expenseInitDatum.type+",'"+expenseInitDatum.icon+"','"+ expenseInitDatum.uniqueName+"','"+expenseInitDatum.name+"',0,0,0,0"+
                     ")");
         }
+
+
+        // 初始化收入
+        List<CategoryItem> incomeInitData = CategoryInitData.getIncomeInitData();
+        for (CategoryItem incomeInitDatum : incomeInitData) {
+            db.execSQL("INSERT INTO " + CategoryModelDao.TABLENAME + " (" +
+                    CategoryModelDao.Properties.Type.columnName + ", " +
+                    CategoryModelDao.Properties.Icon.columnName + ", " +
+                    CategoryModelDao.Properties.UniqueName.columnName + ", " +
+                    CategoryModelDao.Properties.Name.columnName +", " +
+                    CategoryModelDao.Properties.Order.columnName +", "+
+                    CategoryModelDao.Properties.AccountId.columnName +", "+
+                    CategoryModelDao.Properties.AccountBookId.columnName +", "+
+                    CategoryModelDao.Properties.SyncStatus.columnName +
+                    ") VALUES("+incomeInitDatum.type+",'"+incomeInitDatum.icon+"','"+ incomeInitDatum.uniqueName+"','"+incomeInitDatum.name+"',0,0,0,0"+
+                    ")");
+        }
+
         db.setTransactionSuccessful();
         db.endTransaction();
 

@@ -16,7 +16,7 @@ public abstract class HomeBaseAdapter<T> extends BaseAdapter<T> {
     }
 
 
-    static class HomeBaseViewHolder extends BaseViewHolder{
+   public static class HomeBaseViewHolder extends BaseViewHolder{
 
         public HomeBaseViewHolder(@NonNull ViewDataBinding dataBinding) {
             super(dataBinding);

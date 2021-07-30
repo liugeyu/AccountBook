@@ -94,4 +94,21 @@ public class RecordDaoManager {
 
 
 
+    public static Observable<List<Record>> search(String keyword) {
+        return Observable.create((ObservableEmitter<List<Record>> emitter) -> {
+            List<Record> resulet = BaseApplication.getmDaoSession().getRecordDao().queryBuilder().
+                    whereOr(RecordDao.Properties.Amount.like("%"+keyword+"%"),
+                            RecordDao.Properties.CategoryName.like("%"+keyword+"%"),
+                            RecordDao.Properties.CategoryUniqueName.like("%"+keyword+"%"),
+                            RecordDao.Properties.Desc.like("%"+keyword+"%"))
+                    .list();
+            emitter.onNext(resulet);
+            emitter.onComplete();
+        }).compose(RxSchedulersHelper.applyIoTransformer());
+    }
+
+
+    public static void delete(Record record) {
+        BaseApplication.getmDaoSession().getRecordDao().delete(record);
+    }
 }

@@ -8,15 +8,12 @@
         <variable
             name="itemData"
             type="com.geyu.database.ben.Record" />
-
         <variable
             name="itemPosition"
             type="Integer" />
-
         <variable
             name="listener"
-            type="com.geyu.home.ui.contract.Home_HomeContract.View" />
-
+            type="com.geyu.home.ui.contract.Home_SearchContract.View" />
         <import type="com.geyu.database.ben.CategoryModel"/>
     </data>
 
@@ -25,8 +22,8 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/dp_10"
         android:paddingRight="@dimen/dp_10"
-        android:onClick="@{() -> listener.onItemClick(itemData,itemPosition)}"
-        >
+        android:onClick="@{() -> listener.onItemClickListener(itemData,itemPosition)}">
+
 
         <FrameLayout
             android:id="@+id/category_iv"
@@ -35,7 +32,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:background="@{itemData.type == CategoryModel.TYPE_EXPENSE ? @drawable/bg_category_expense: @drawable/bg_category_income}"
+            android:background="@{itemData.type == CategoryModel.TYPE_EXPENSE ? @drawable/bg_category_expense : @drawable/bg_category_income}"
             selected="@{true}">
             <ImageView
                 android:layout_width="@dimen/dp_30"
@@ -55,7 +52,7 @@
             android:layout_marginStart="@dimen/dp_5"
             android:text="@{itemData.categoryName}"
             tools:text="xxx"
-             />
+            />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

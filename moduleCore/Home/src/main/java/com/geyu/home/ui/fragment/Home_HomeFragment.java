@@ -1,5 +1,9 @@
 package com.geyu.home.ui.fragment;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.os.Bundle;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.geyu.Constant;
 import com.geyu.base.Annotation.CreateViewModel;
@@ -10,6 +14,7 @@ import com.geyu.db.RecordDaoManager;
 import com.geyu.home.R;
 import com.geyu.home.databinding.HomeFragmentHomeBinding;
 import com.geyu.home.ui.activity.Home_RecordEditActivity;
+import com.geyu.home.ui.activity.Home_SearchActivity;
 import com.geyu.home.ui.activity.Home_recordDetailActivity;
 import com.geyu.home.ui.adapter.Home_HomeAdapter;
 import com.geyu.home.ui.contract.Home_HomeContract;
@@ -70,6 +75,23 @@ public class Home_HomeFragment extends BaseMvvmFragment<Home_HomeViewModel, Home
     @Override
     public void onItemClick(Record itemData, int position) {
         ToActivity.toActivity(mActivity, Home_recordDetailActivity.class,itemData);
+    }
+
+    @Override
+    public void toSearch() {
+
+        Bundle options = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            options = ActivityOptions.makeSceneTransitionAnimation(
+                    mActivity, mDataBinding.searchIv,
+                    "transition_search_back"
+            ).toBundle();
+        }
+        if (options != null) {
+            startActivity(new Intent(mActivity,Home_SearchActivity.class),options);
+        }else {
+            ToActivity.toActivity(mActivity, Home_SearchActivity.class);
+        }
     }
 
     @Override

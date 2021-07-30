@@ -13,18 +13,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.geyu.view.TopBar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_constraintTop_toTopOf="parent">
-            <TextView
-                style="@style/text_huge_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:text="记账本">
+
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="账本"/>
-        </androidx.appcompat.widget.Toolbar>
+                android:layout_gravity="end|center_vertical"
+                android:onClick="@{() -> view.toSearch()}">
+                <ImageView
+                    android:id="@+id/search_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/home_ic_search"
+                    android:layout_marginRight="@dimen/dp_15"/>
+            </FrameLayout>
+        </com.geyu.view.TopBar>
 
         <com.geyu.view.BaseRefreshLayout
             android:id="@+id/rv"

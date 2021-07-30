@@ -1,9 +1,14 @@
 package com.geyu.accountbook.ui.main.aty;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -17,6 +22,10 @@ import com.geyu.base.BaseMvvmActivity;
 import com.geyu.database.RecordDao;
 import com.geyu.database.ben.CategoryModel;
 import com.geyu.db.RecordDaoManager;
+import com.geyu.home.ui.fragment.Home_HomeFragment;
+import com.geyu.my.ui.fragment.My_MyFragment;
+import com.geyu.service.TestService;
+import com.geyu.utils.DisplayUtils;
 import com.geyu.utils.LLOG;
 import com.geyu.utils.SystemBarTintManagerHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -59,7 +68,10 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBi
         test.put("testkey","testData");
         MobclickAgent.onEventObject(this,"string_test_123",test);
 
+        startService(new Intent(this, TestService.class));
     }
+
+
 
     @Override
     protected void initData() {
@@ -102,4 +114,17 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBi
         fragmentTransaction.commit();
     }
 
+
+    private long lastKeyBack = 0;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (System.currentTimeMillis() - lastKeyBack > 2000) {
+                lastKeyBack = System.currentTimeMillis();
+                showErrMessage("两秒内再按返回");
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

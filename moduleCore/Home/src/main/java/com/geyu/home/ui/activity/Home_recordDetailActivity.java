@@ -2,12 +2,17 @@ package com.geyu.home.ui.activity;
 
 import com.geyu.base.Annotation.CreateViewModel;
 import com.geyu.base.BaseMvvmActivity;
+import com.geyu.callback.event.RecordChanager;
 import com.geyu.database.ben.Record;
+import com.geyu.db.RecordDaoManager;
 import com.geyu.home.R;
 import com.geyu.home.databinding.HomeActivityRecordDetailBinding;
+import com.geyu.home.databinding.HomeActivityRecordDetailBindingImpl;
 import com.geyu.home.ui.contract.Home_RecordDetailContract;
 import com.geyu.home.ui.viewmodel.Home_RecordDetailViewModel;
 import com.geyu.utils.ToActivity;
+
+import org.greenrobot.eventbus.EventBus;
 
 @CreateViewModel(Home_RecordDetailViewModel.class)
 public class Home_recordDetailActivity extends BaseMvvmActivity<Home_RecordDetailViewModel, HomeActivityRecordDetailBinding>  implements Home_RecordDetailContract.View {
@@ -32,9 +37,17 @@ public class Home_recordDetailActivity extends BaseMvvmActivity<Home_RecordDetai
         mDataBinding.setView(this);
     }
 
+
     @Override
     public void modification(Record record) {
         ToActivity.toActivity(this,Home_RecordEditActivity.class,record);
+        finish();
+    }
+
+    @Override
+    public void delete(Record record) {
+        RecordDaoManager.delete(record);
+        EventBus.getDefault().post(new RecordChanager());
         finish();
     }
 }

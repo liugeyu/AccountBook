@@ -18,5 +18,6 @@ public class Home_HomeContract {
     public interface View{
         void addNewRecord();
         void onItemClick(Record itemData, int position);
+        void toSearch();
     }
 }

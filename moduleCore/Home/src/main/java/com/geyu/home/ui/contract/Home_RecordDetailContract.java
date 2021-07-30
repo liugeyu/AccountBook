@@ -10,6 +10,7 @@ public class Home_RecordDetailContract {
 
     public interface View {
         void modification(Record record);
+        void delete(Record record);
     }
 
 }

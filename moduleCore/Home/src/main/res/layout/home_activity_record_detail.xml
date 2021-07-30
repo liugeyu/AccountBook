@@ -11,6 +11,8 @@
         <variable
             name="itemData"
             type="com.geyu.database.ben.Record" />
+
+        <import type="com.geyu.database.ben.CategoryModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +25,20 @@
             android:layout_height="wrap_content"
             app:text="@string/detail"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/white"/>
+            android:background="@color/white">
+
+            <FrameLayout
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_gravity="end|center_vertical"
+                android:onClick="@{() -> view.delete(itemData)}">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/home_ic_delete"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+        </com.geyu.view.TopBar>
 
         <LinearLayout
             app:layout_constraintTop_toBottomOf="@id/topbar"
@@ -46,7 +61,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:background="@drawable/bg_category_expense"
+                    android:background="@{itemData.type == CategoryModel.TYPE_EXPENSE ? @drawable/bg_category_expense : @drawable/bg_category_income}"
                     selected="@{true}">
                     <ImageView
                         android:layout_width="wrap_content"
