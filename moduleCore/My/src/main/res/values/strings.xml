@@ -3,4 +3,6 @@
     <string name="about">关于</string>
     <string name="backup">数据备份</string>
     <string name="my">我的</string>
+    <string name="data_export">数据导出</string>
+    <string name="manager">管理</string>
 </resources>

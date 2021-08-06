@@ -3,6 +3,7 @@ package com.geyu.utils;
 import android.app.Activity;
 
 import com.geyu.base.BaseActivity;
+import com.geyu.database.ben.AccountBook;
 
 import java.util.Stack;
 
@@ -52,6 +53,13 @@ public class ScreenManager {
     public Activity getPreActivity() {
         if (activities.size() >= 2) {
             return activities.get(activities.size() - 2);
+        }
+        return null;
+    }
+
+    public Activity getLastActivity(){
+        if (activities != null && activities.size() > 0) {
+            return activities.lastElement();
         }
         return null;
     }

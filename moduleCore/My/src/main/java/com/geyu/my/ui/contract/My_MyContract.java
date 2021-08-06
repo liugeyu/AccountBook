@@ -7,4 +7,9 @@ public class My_MyContract {
     public static abstract class ViewModel extends BaseViewModel {
 
     }
+
+    public interface View{
+        void backup();
+        void about();
+    }
 }

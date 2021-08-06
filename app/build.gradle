@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
 }
 println("app 构建")
 println(rootProject.android.compileSdkVersion)

@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="view"
+            type="com.geyu.my.ui.contract.My_MyContract.View" />
     </data>
 
     <LinearLayout
@@ -35,7 +38,8 @@
                     android:layout_marginTop="@dimen/dp_1"
                     android:layout_height="@dimen/dp_50"
                     android:paddingLeft="@dimen/dp_10"
-                    android:paddingRight="@dimen/dp_10">
+                    android:paddingRight="@dimen/dp_10"
+                    android:onClick="@{() -> view.backup()}">
                     <TextView
 
                         style="@style/text_medium_label"
@@ -59,7 +63,8 @@
                     android:layout_marginTop="@dimen/dp_1"
                     android:layout_height="@dimen/dp_50"
                     android:paddingLeft="@dimen/dp_10"
-                    android:paddingRight="@dimen/dp_10">
+                    android:paddingRight="@dimen/dp_10"
+                    android:onClick="@{() -> view.about()}">
                     <TextView
                         style="@style/text_medium_label"
                         android:layout_width="wrap_content"

@@ -26,11 +26,12 @@ public abstract class BaseMvvmFragment<VM extends BaseViewModel,VDB extends View
         mDataBinding = DataBindingUtil.inflate(inflater,getLayoutId(),container,false);
         mViewModel = ViewModelFactoryImpl.getInstance().createViewModel(this);
         getLifecycle().addObserver(mViewModel);
+        mDataBinding.setLifecycleOwner(this);
         initErrMsg();
         return mDataBinding.getRoot();
     }
     protected  void initErrMsg() {
-        mViewModel.getErrMessage().observe(getViewLifecycleOwner(), this::showErrMessage);
+        mViewModel.getMessage().observe(getViewLifecycleOwner(), this::showErrMessage);
     }
 
     protected void showErrMessage(String errMsg){

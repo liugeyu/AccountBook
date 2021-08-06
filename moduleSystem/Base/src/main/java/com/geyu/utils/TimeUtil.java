@@ -79,4 +79,14 @@ public class TimeUtil {
         todayEnd.set(Calendar.MILLISECOND, 999);
         return todayEnd.getTime().getTime();
     }
+
+    /**
+     *
+     * @param format 如 yyyy-MM-dd HH:mm:ss
+     * @return
+     */
+    public static String getTime(String format) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+        return simpleDateFormat.format(new Date());
+    }
 }

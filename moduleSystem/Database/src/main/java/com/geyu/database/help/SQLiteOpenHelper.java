@@ -2,11 +2,13 @@ package com.geyu.database.help;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.geyu.database.AccountBookDao;
 import com.geyu.database.AccountDao;
 import com.geyu.database.CategoryModelDao;
 import com.geyu.database.DaoMaster;
+import com.geyu.database.RecordDao;
 import com.geyu.database.TestDao;
 import com.geyu.database.ben.AccountBook;
 import com.geyu.database.ben.CategoryItem;
@@ -27,6 +29,7 @@ public class SQLiteOpenHelper extends DaoMaster.OpenHelper{
     @Override
     public void onCreate(Database db) {
         super.onCreate(db);
+        Log.e("db","onCreate===");
         db.beginTransaction();
         // 初始化一个账本
         initAccountBook(db);
@@ -97,6 +100,7 @@ public class SQLiteOpenHelper extends DaoMaster.OpenHelper{
     @Override
     public void onUpgrade(Database db, int oldVersion, int newVersion) {
         super.onUpgrade(db, oldVersion, newVersion);
+        Log.e("db","onUpgrade===");
         MigrationHelper.migrate(db, new MigrationHelper.ReCreateAllTableListener() {
             @Override
             public void onCreateAllTables(Database db, boolean ifNotExists) {
@@ -106,7 +110,7 @@ public class SQLiteOpenHelper extends DaoMaster.OpenHelper{
             public void onDropAllTables(Database db, boolean ifExists) {
                 DaoMaster.dropAllTables(db, ifExists);
             }
-        });
+        },CategoryModelDao.class, RecordDao.class,AccountDao.class,AccountBookDao.class,TestDao.class);
 
     }
 

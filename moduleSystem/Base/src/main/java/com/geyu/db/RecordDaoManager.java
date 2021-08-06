@@ -111,4 +111,13 @@ public class RecordDaoManager {
     public static void delete(Record record) {
         BaseApplication.getmDaoSession().getRecordDao().delete(record);
     }
+
+
+    public static Observable<List<Record>> findAll(){
+        return Observable.create((ObservableEmitter<List<Record>> emitter) -> {
+            List<Record> ret = BaseApplication.getmDaoSession().getRecordDao().queryBuilder().list();
+            emitter.onNext(ret);
+            emitter.onComplete();
+        }).compose(RxSchedulersHelper.applyIoTransformer());
+    }
 }

@@ -12,6 +12,7 @@ import org.greenrobot.greendao.query.WhereCondition;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
 
 public class CategroyManager {
 
@@ -20,6 +21,14 @@ public class CategroyManager {
         return Observable.just(type)
                 .map(integer -> find(type)).compose(RxSchedulersHelper.applyIoTransformer());
 
+    }
+
+    public static Observable<List<CategoryModel>> findAll(){
+        return Observable.create((ObservableEmitter<List<CategoryModel>> emitter) -> {
+            List<CategoryModel> data =  BaseApplication.getmDaoSession().getCategoryModelDao().queryBuilder().list();
+            emitter.onNext(data);
+            emitter.onComplete();
+        }).compose(RxSchedulersHelper.applyIoTransformer());
     }
 
     public static List<CategoryModel> find(int type) {

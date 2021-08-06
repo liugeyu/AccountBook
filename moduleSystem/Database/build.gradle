@@ -29,7 +29,7 @@ android {
 }
 
 greendao {
-    schemaVersion 1
+    schemaVersion 9
     daoPackage 'com.geyu.database'
     //设置DaoMaster 、DaoSession、Dao目录
     targetGenDir 'src/main/java'

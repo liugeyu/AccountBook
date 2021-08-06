@@ -31,7 +31,7 @@ public class St_StatisticsViewModel extends St_statisticsContract.ViewModel {
                     LLOG.e(recordGroups.toString());
                     recordGroup.postValue(recordGroups);
                 },throwable -> {
-                    showErrMessage(throwable.getMessage());
+                    showMessage(throwable.getMessage());
                 });
         addDisposable(disposable);
     }

@@ -3,6 +3,7 @@ if (rootProject.myIsModule) {
 } else {
     apply plugin: 'com.android.application'
 }
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion

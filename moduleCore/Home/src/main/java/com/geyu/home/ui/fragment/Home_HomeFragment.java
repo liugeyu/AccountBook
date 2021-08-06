@@ -13,6 +13,7 @@ import com.geyu.database.ben.Record;
 import com.geyu.db.RecordDaoManager;
 import com.geyu.home.R;
 import com.geyu.home.databinding.HomeFragmentHomeBinding;
+import com.geyu.home.databinding.HomeFragmentHomeBindingImpl;
 import com.geyu.home.ui.activity.Home_RecordEditActivity;
 import com.geyu.home.ui.activity.Home_SearchActivity;
 import com.geyu.home.ui.activity.Home_recordDetailActivity;

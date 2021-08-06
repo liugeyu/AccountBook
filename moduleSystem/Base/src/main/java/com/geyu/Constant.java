@@ -18,4 +18,12 @@ public final class Constant {
         public static final String FRAGMENT_MY = "/my/MyFragment";
 
     }
+
+
+
+    public static class ShowLoading{
+        public static final int TYPE_DEF = 0;
+        public static final int TYPE_DISMISS = 1;
+        // ...
+    }
 }

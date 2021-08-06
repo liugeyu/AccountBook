@@ -3,6 +3,7 @@ package com.geyu.utils;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -79,5 +80,11 @@ public class DataBindingUtils {
                 }
             }
         });
+    }
+
+    @BindingAdapter("testBinding")
+    public static void testBinding(EditText tv, String str) {
+        LLOG.e("testBinding" + str);
+        tv.setText(str);
     }
 }

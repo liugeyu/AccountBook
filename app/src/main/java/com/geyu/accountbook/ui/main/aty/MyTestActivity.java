@@ -1,11 +1,17 @@
 package com.geyu.accountbook.ui.main.aty;
 
 import com.geyu.accountbook.R;
+import com.geyu.accountbook.databinding.ActivityMyTestBinding;
+import com.geyu.accountbook.databinding.ActivityMyTestBindingImpl;
+import com.geyu.accountbook.ui.main.viewmodel.MyTestViewModel;
+import com.geyu.base.Annotation.CreateViewModel;
 import com.geyu.base.BaseActivity;
+import com.geyu.base.BaseMvvmActivity;
 import com.geyu.database.ben.Record;
 import com.geyu.db.RecordDaoManager;
 
-public class MyTestActivity extends BaseActivity {
+@CreateViewModel(MyTestViewModel.class)
+public class MyTestActivity extends BaseMvvmActivity<MyTestViewModel, ActivityMyTestBinding> {
 
 
     @Override
@@ -17,5 +23,8 @@ public class MyTestActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
+
+
+        mDataBinding.setViewModel(mViewModel);
     }
 }

@@ -7,8 +7,6 @@ import com.geyu.db.RecordDaoManager;
 import com.geyu.home.ui.contract.Home_HomeContract;
 import com.geyu.rx.RxSchedulersHelper;
 import com.geyu.utils.ErrHandler;
-import com.geyu.utils.LLOG;
-import com.geyu.utils.ToActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -16,10 +14,8 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
-import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.OnLifecycleEvent;
 import io.reactivex.disposables.Disposable;
 
 public class Home_HomeViewModel extends Home_HomeContract.ViewMode {
@@ -38,7 +34,7 @@ public class Home_HomeViewModel extends Home_HomeContract.ViewMode {
                 .subscribe((rs) ->{
                     homeDatas.setValue(rs);
                 },throwable -> {
-                    showErrMessage(ErrHandler.getErrMsg(throwable));
+                    showMessage(ErrHandler.getErrMsg(throwable));
                 });
         addDisposable(disposable);
     }
@@ -79,7 +75,7 @@ public class Home_HomeViewModel extends Home_HomeContract.ViewMode {
                 .subscribe((rs) ->{
                     loadMore.setValue(rs);
                 },throwable -> {
-                    showErrMessage(ErrHandler.getErrMsg(throwable));
+                    showMessage(ErrHandler.getErrMsg(throwable));
                 });
         addDisposable(disposable);
     }
