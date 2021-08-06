@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="itemData"
+            type="com.geyu.my.ben.BackupFile" />
+        <variable
+            name="itemPosition"
+            type="Integer" />
+        <variable
+            name="listener"
+            type="com.geyu.my.ui.contract.My_BackupManagerContract.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:onClick="@{() -> listener.openDetail(itemData)}">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/text_big_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            tools:text="title"
+            android:text="@{itemData.name}"/>
+
+        <TextView
+            android:id="@+id/time"
+            style="@style/text_size_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@{itemData.time}"
+            tools:text="time"/>
+        <TextView
+            style="@style/text_size_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            fileSize="@{itemData.size}"
+            android:layout_marginBottom="@dimen/dp_10"
+            tools:text="size"/>
+
+        <TextView
+            style="@style/text_medium_label"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_60"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"
+            android:onClick="@{() -> listener.deleteItem(itemData,itemPosition)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@string/delete"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

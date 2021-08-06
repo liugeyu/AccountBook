@@ -6,6 +6,7 @@ import com.geyu.my.R
 import com.geyu.my.databinding.MyActivityBackupBinding
 import com.geyu.my.ui.contract.My_BackupContract
 import com.geyu.my.ui.viewmodel.My_BackupViewModel
+import com.geyu.utils.ToActivity
 
 @CreateViewModel(My_BackupViewModel::class)
 class My_BackupActivity: BaseMvvmActivity<My_BackupContract.ViewModel, MyActivityBackupBinding>() ,My_BackupContract.View {
@@ -26,6 +27,7 @@ class My_BackupActivity: BaseMvvmActivity<My_BackupContract.ViewModel, MyActivit
 
     override fun manager() {
 
+        ToActivity.toActivity(this,My_BackupManagerActivity::class.java)
     }
 
 

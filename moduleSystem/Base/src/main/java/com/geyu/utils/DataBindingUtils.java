@@ -7,8 +7,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.geyu.base.R;
 import com.geyu.database.data.CategoryIconHelper;
 
+import java.text.MessageFormat;
 import java.util.logging.Logger;
 
 import androidx.databinding.BindingAdapter;
@@ -86,5 +88,11 @@ public class DataBindingUtils {
     public static void testBinding(EditText tv, String str) {
         LLOG.e("testBinding" + str);
         tv.setText(str);
+    }
+
+    @BindingAdapter("fileSize")
+    public static void fileSize(TextView tv,long size){
+
+        tv.setText(String.format(ResUtils.getString(R.string.file_size),size/1000f));
     }
 }

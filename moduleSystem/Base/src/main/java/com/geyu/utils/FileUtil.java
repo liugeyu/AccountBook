@@ -6,6 +6,7 @@ import java.io.File;
 
 public class FileUtil {
 
+    private static File cacheFile;
     private FileUtil(){}
 
 
@@ -20,6 +21,10 @@ public class FileUtil {
 
 
     private static File getCache(){
-        return BaseApplication.getContext().getExternalCacheDir();
+        if (cacheFile != null) {
+            return cacheFile;
+        }
+        cacheFile = BaseApplication.getContext().getExternalCacheDir();
+        return cacheFile;
     }
 }

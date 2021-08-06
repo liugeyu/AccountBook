@@ -5,4 +5,7 @@
     <string name="my">我的</string>
     <string name="data_export">数据导出</string>
     <string name="manager">管理</string>
+    <string name="backup_manager">备份管理</string>
+    <string name="delete">删除</string>
+    <string name="my_detail">详情</string>
 </resources>

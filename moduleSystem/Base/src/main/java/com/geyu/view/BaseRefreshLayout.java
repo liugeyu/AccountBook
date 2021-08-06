@@ -47,6 +47,13 @@ public class BaseRefreshLayout extends FrameLayout implements OnRefreshLoadMoreL
         rv.setLayoutManager(layoutManager);
     }
 
+    public void enableRefresh(boolean enable){
+        smartRefreshLayout.setEnableRefresh(enable);
+    }
+    public void enableLoadMore(boolean enable){
+        smartRefreshLayout.setEnableLoadMore(enable);
+    }
+
     public void setAdapter(RecyclerView.Adapter adapter) {
         rv.setAdapter(adapter);
     }

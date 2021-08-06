@@ -25,5 +25,6 @@
     <string name="date_format_today_time">今天 HH:mm</string>
     <string name="date_format_yesterday">昨天</string>
     <string name="date_format_date_format_yesterday_time">昨天 HH:mm</string>
+    <string name="file_size">文件大小: %.2fKB</string>
 
 </resources>
