@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -12,11 +13,8 @@ import com.geyu.accountbook.R;
 import com.geyu.accountbook.databinding.ActivityMainBinding;
 import com.geyu.accountbook.ui.main.viewmodel.MainViewModel;
 import com.geyu.base.Annotation.CreateViewModel;
-import com.geyu.base.BaseApplication;
 import com.geyu.base.BaseFragment;
 import com.geyu.base.BaseMvvmActivity;
-import com.geyu.database.TestDao;
-import com.geyu.database.ben.Test;
 import com.geyu.service.TestService;
 import com.geyu.utils.SystemBarTintManagerHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -24,23 +22,21 @@ import com.umeng.analytics.MobclickAgent;
 
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import io.reactivex.disposables.Disposable;
-import kotlin.jvm.functions.Function1;
 
 @Route(path = Constant.MainClass.ACTIVITY_MAIN)
 @CreateViewModel(MainViewModel.class)
 public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBinding> implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
-
-
-
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return super.dispatchTouchEvent(ev);
+    }
 
     @Override
     protected int getLayoutId() {
@@ -57,27 +53,6 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBi
     @Override
     protected void initView() {
 
-        TestKt testKt = new TestKt();
-        testKt.test();
-
-        testKt.test3(new Function1<TestKt, Integer>() {
-            @Override
-            public Integer invoke(TestKt testKt) {
-                return 1;
-            }
-        });
-        Test testData = new Test();
-        testData.setMsg(""+System.currentTimeMillis());
-        testData.setMsg2("msg2");
-        BaseApplication.getmDaoSession().getTestDao().insert(testData);
-
-        List<Test> result = BaseApplication.getmDaoSession().getTestDao().queryBuilder().where(TestDao.Properties.Msg.eq("")).list();
-//
-//        BaseApplication.getmDaoSession().getTestDao().delete(testData);
-//
-//        BaseApplication.getmDaoSession().getTestDao().queryBuilder().where(null).buildDelete();
-//
-//        BaseApplication.getmDaoSession().getTestDao().update();
 
         SystemBarTintManagerHelper.getInsatance().titleBarPaddingTop(mDataBinding.container);
 

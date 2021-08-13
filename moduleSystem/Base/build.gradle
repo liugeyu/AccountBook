@@ -49,6 +49,7 @@ dependencies {
     api rootProject.dependenciesJar.refresh_header_classics
     api rootProject.dependenciesJar.refresh_footer_classics
     api rootProject.dependenciesJar.fastjson
+    api rootProject.dependenciesJar.NewbieGuide
     api project(path: ':moduleSystem:Database')
 
 }

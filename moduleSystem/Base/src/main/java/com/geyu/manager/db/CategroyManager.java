@@ -1,13 +1,9 @@
-package com.geyu.db;
+package com.geyu.manager.db;
 
 import com.geyu.base.BaseApplication;
 import com.geyu.database.CategoryModelDao;
-import com.geyu.database.RecordDao;
 import com.geyu.database.ben.CategoryModel;
-import com.geyu.database.ben.Record;
 import com.geyu.rx.RxSchedulersHelper;
-
-import org.greenrobot.greendao.query.WhereCondition;
 
 import java.util.List;
 

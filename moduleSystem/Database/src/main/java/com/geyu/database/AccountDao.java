@@ -48,7 +48,7 @@ public class AccountDao extends AbstractDao<Account, Long> {
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"ACCOUNT_NAME\" TEXT," + // 1: accountName
                 "\"CREATE_TIME\" INTEGER NOT NULL ," + // 2: createTime
-                "\"ACCOUNT_ID\" INTEGER NOT NULL ," + // 3: accountId
+                "\"ACCOUNT_ID\" INTEGER NOT NULL UNIQUE ," + // 3: accountId
                 "\"ACCOUNT_BOOK_ID\" INTEGER NOT NULL ," + // 4: accountBookId
                 "\"SYNC_STATUS\" INTEGER NOT NULL );"); // 5: syncStatus
     }

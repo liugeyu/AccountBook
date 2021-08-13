@@ -42,6 +42,7 @@ public class TopBar extends FrameLayout {
         initView();
     }
 
+
     private void initView() {
         LayoutInflater.from(getContext()).inflate(R.layout.base_top_bar,this,true);
         tvTitle = findViewById(R.id.title);

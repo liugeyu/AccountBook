@@ -6,14 +6,10 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.geyu.Constant;
 import com.geyu.base.Annotation.CreateViewModel;
 import com.geyu.base.BaseMvvmFragment;
-import com.geyu.database.ben.CategoryModel;
 import com.geyu.database.ben.RecordGroup;
-import com.geyu.db.CategroyManager;
-import com.geyu.db.RecordDaoManager;
 import com.geyu.statistics.R;
 import com.geyu.statistics.databinding.StFragmentStatistivsBinding;
 import com.geyu.statistics.ui.viewmodel.St_StatisticsViewModel;
-import com.geyu.utils.LLOG;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
@@ -28,11 +24,6 @@ import com.github.mikephil.charting.utils.MPPointF;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import io.reactivex.ObservableSource;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
 
 @Route(path = Constant.StatisticsClass.FRAGMENT_STATISTICS)
 @CreateViewModel(St_StatisticsViewModel.class)

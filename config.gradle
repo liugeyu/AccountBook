@@ -33,6 +33,7 @@ ext{
             "refresh_layout_kernel"   : 'com.scwang.smart:refresh-layout-kernel:2.0.3',
             "refresh_header_classics" : 'com.scwang.smart:refresh-header-classics:2.0.3',
             "refresh_footer_classics" : 'com.scwang.smart:refresh-footer-classics:2.0.3',
-            fastjson: "com.alibaba:fastjson:1.1.57.android"
+            fastjson: "com.alibaba:fastjson:1.1.57.android",
+            NewbieGuide: "com.github.huburt-Hu:NewbieGuide:v2.4.3"
     ]
 }

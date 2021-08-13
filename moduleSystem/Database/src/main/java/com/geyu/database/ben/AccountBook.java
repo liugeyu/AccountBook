@@ -3,6 +3,7 @@ package com.geyu.database.ben;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Unique;
 
 /**
  * 账本
@@ -20,6 +21,7 @@ public class AccountBook {
     private String accountBookName;
 
     /** 账本 ID */
+    @Unique
     private long accountBookId;
 
     /** 同步状态 */

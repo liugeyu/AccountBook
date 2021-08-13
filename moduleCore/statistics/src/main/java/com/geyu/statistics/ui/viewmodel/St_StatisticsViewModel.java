@@ -3,7 +3,7 @@ package com.geyu.statistics.ui.viewmodel;
 import com.geyu.callback.event.RecordChanager;
 import com.geyu.database.ben.CategoryModel;
 import com.geyu.database.ben.RecordGroup;
-import com.geyu.db.RecordDaoManager;
+import com.geyu.manager.db.RecordDaoManager;
 import com.geyu.statistics.ui.contract.St_statisticsContract;
 import com.geyu.utils.LLOG;
 

@@ -3,6 +3,7 @@ package com.geyu.database.ben;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Unique;
 
 /**
  * 每笔钱来源账户
@@ -19,6 +20,7 @@ public class Account {
     private long createTime;
 
     /** 账户 ID */
+    @Unique
     private long accountId;
 
     /**

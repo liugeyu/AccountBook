@@ -5,33 +5,34 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.app.hubert.guide.NewbieGuide;
+import com.app.hubert.guide.model.GuidePage;
 import com.geyu.Constant;
 import com.geyu.base.Annotation.CreateViewModel;
 import com.geyu.base.BaseMvvmFragment;
 import com.geyu.callback.OnRefreshListener;
+import com.geyu.callback.event.RecordChanager;
 import com.geyu.database.ben.Record;
-import com.geyu.db.RecordDaoManager;
 import com.geyu.home.R;
 import com.geyu.home.databinding.HomeFragmentHomeBinding;
-import com.geyu.home.databinding.HomeFragmentHomeBindingImpl;
 import com.geyu.home.ui.activity.Home_RecordEditActivity;
 import com.geyu.home.ui.activity.Home_SearchActivity;
 import com.geyu.home.ui.activity.Home_recordDetailActivity;
 import com.geyu.home.ui.adapter.Home_HomeAdapter;
 import com.geyu.home.ui.contract.Home_HomeContract;
+import com.geyu.home.ui.view.RefreshRecyclerNetConfig;
 import com.geyu.home.ui.viewmodel.Home_HomeViewModel;
-import com.geyu.rx.RxSchedulersHelper;
+import com.geyu.manager.db.AccountBookManager;
 import com.geyu.utils.ToActivity;
 
-import java.util.List;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
-import androidx.lifecycle.Observer;
+import java.util.List;
+import java.util.Map;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.ObservableTransformer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
 
 @Route(path = Constant.HomeClass.FRAGMENT_HOME)
 @CreateViewModel(Home_HomeViewModel.class)
@@ -53,20 +54,46 @@ public class Home_HomeFragment extends BaseMvvmFragment<Home_HomeViewModel, Home
         adapter.setListener(this);
 
         mDataBinding.rv.setListener(this);
+
+        NewbieGuide.with(this)
+                .setLabel("guild1")
+                .addGuidePage(GuidePage.newInstance()
+                .addHighLight(mDataBinding.fab).setLayoutRes(R.layout.home_home_fab_guide))
+                .addGuidePage(GuidePage.newInstance().addHighLight(mDataBinding.searchIv).setLayoutRes(R.layout.home_home_fab_guide)).show();
     }
 
     @Override
     protected void initData() {
         super.initData();
-        mViewModel.getRecord().observe(this, records -> {
-            adapter.setDatas(records);
-            mDataBinding.rv.refreshFinish();
+//        mViewModel.getRecord().observe(this, records -> {
+//            adapter.setDatas(records);
+//            mDataBinding.rv.refreshFinish();
+//        });
+
+        mDataBinding.setAccountBook(AccountBookManager.findAccountBook());
+        mDataBinding.rv.setNetConfig(new RefreshRecyclerNetConfig<Record>() {
+            @Override
+            public Observable<List<Record>> getNetObservable(Map<String,Object> map, int action) {
+                return mViewModel.getRecords(map);
+            }
         });
-        mViewModel.getLoadMore().observe(this,records -> {
-            adapter.addDatas(records);
-            mDataBinding.rv.loadMoreFinish();
-        });
+        mDataBinding.rv.firstLoad();
+//        mViewModel.getLoadMore().observe(this,records -> {
+//            adapter.addDatas(records);
+//            mDataBinding.rv.loadMoreFinish();
+//        });
     }
+
+    @Override
+    protected boolean registerEventBus() {
+        return true;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onRecrodChanager(RecordChanager event){
+        mDataBinding.rv.firstLoad();
+    }
+
 
     @Override
     public void addNewRecord() {

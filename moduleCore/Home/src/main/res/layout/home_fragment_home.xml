@@ -7,6 +7,10 @@
         <variable
             name="view"
             type="com.geyu.home.ui.contract.Home_HomeContract.View" />
+
+        <variable
+            name="accountBook"
+            type="com.geyu.database.ben.AccountBook" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,6 +24,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:text="记账本">
 
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:text="@{accountBook.accountBookName}"/>
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,7 +44,7 @@
             </FrameLayout>
         </com.geyu.view.TopBar>
 
-        <com.geyu.view.BaseRefreshLayout
+        <com.geyu.home.ui.view.RefreshRecyclerViewLayout
             android:id="@+id/rv"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -54,6 +64,7 @@
             android:onClick="@{() -> view.addNewRecord()}"
             app:srcCompat="@drawable/ic_add_"
             app:layout_behavior="@string/fab_transformation_scrim_behavior"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

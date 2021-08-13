@@ -1,4 +1,4 @@
-package com.geyu.db;
+package com.geyu.manager.db;
 
 import android.database.Cursor;
 
@@ -7,16 +7,12 @@ import com.geyu.database.RecordDao;
 import com.geyu.database.ben.Record;
 import com.geyu.database.ben.RecordGroup;
 import com.geyu.rx.RxSchedulersHelper;
-import com.geyu.utils.LLOG;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.constraintlayout.solver.widgets.analyzer.WidgetGroup;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.annotations.NonNull;
 
 public class RecordDaoManager {
 
@@ -34,7 +30,9 @@ public class RecordDaoManager {
      * @return
      */
     public static List<Record> find(int page,int limit) {
-        return BaseApplication.getmDaoSession().getRecordDao().queryBuilder().offset(page * limit).limit(limit).orderDesc(RecordDao.Properties.Id).list();
+        return BaseApplication.getmDaoSession().getRecordDao().queryBuilder()
+                .where(RecordDao.Properties.AccountBookId.eq(AccountBookManager.getAccountBookId()))
+                .offset(page * limit).limit(limit).orderDesc(RecordDao.Properties.Id).list();
     }
 
     public static Observable<List<Record>> findRecords(int page,int limit) {
@@ -49,7 +47,7 @@ public class RecordDaoManager {
     public static Observable<List<RecordGroup>> queryGroupByCategory(long start,long ent, int type){
         return Observable.create((ObservableEmitter<List<RecordGroup>> emitter) -> {
             StringBuffer sb = getGroupSql();
-            Cursor cursor = BaseApplication.getmDaoSession().getDatabase().rawQuery(sb.toString(),new String[]{start+"",ent+"", ""+ type});
+            Cursor cursor = BaseApplication.getmDaoSession().getDatabase().rawQuery(sb.toString(),new String[]{start+"",ent+"", ""+ type, ""+AccountBookManager.getAccountBookId()});
             List<RecordGroup> results = new ArrayList<>();
             int uniqueName = cursor.getColumnIndexOrThrow(RecordGroup.columnUniqueName);
             int sumAmt = cursor.getColumnIndexOrThrow(RecordGroup.columnSumAmount);
@@ -84,7 +82,8 @@ public class RecordDaoManager {
 
         sql.append("WHERE ").append(RecordDao.Properties.Time.columnName).append(" >= ?")
                 .append(" AND ").append(RecordDao.Properties.Time.columnName).append(" <= ? ")
-        .append("AND ").append(RecordDao.Properties.Type.columnName).append( " = ? ");
+        .append("AND ").append(RecordDao.Properties.Type.columnName).append( " = ? ")
+        .append("AND ").append(RecordDao.Properties.AccountBookId.columnName).append(" = ? ");
 
 
         sql.append("GROUP BY ").append(RecordDao.Properties.CategoryUniqueName.columnName);

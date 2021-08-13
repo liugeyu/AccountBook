@@ -9,7 +9,6 @@ import com.geyu.database.AccountDao;
 import com.geyu.database.CategoryModelDao;
 import com.geyu.database.DaoMaster;
 import com.geyu.database.RecordDao;
-import com.geyu.database.TestDao;
 import com.geyu.database.ben.AccountBook;
 import com.geyu.database.ben.CategoryItem;
 import com.geyu.database.ben.CategoryModel;
@@ -110,7 +109,7 @@ public class SQLiteOpenHelper extends DaoMaster.OpenHelper{
             public void onDropAllTables(Database db, boolean ifExists) {
                 DaoMaster.dropAllTables(db, ifExists);
             }
-        },CategoryModelDao.class, RecordDao.class,AccountDao.class,AccountBookDao.class,TestDao.class);
+        },CategoryModelDao.class, RecordDao.class,AccountDao.class,AccountBookDao.class);
 
     }
 

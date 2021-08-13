@@ -1,4 +1,4 @@
-package com.geyu.db;
+package com.geyu.manager.db;
 
 import com.geyu.base.BaseApplication;
 import com.geyu.database.ben.Account;

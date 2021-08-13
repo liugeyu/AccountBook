@@ -14,6 +14,7 @@ import java.text.MessageFormat;
 import java.util.logging.Logger;
 
 import androidx.databinding.BindingAdapter;
+import androidx.databinding.DataBindingUtil;
 
 public class DataBindingUtils {
 

@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.Serializable;
 
 import androidx.annotation.NonNull;
@@ -55,13 +57,28 @@ public  class BaseFragment<D extends Serializable> extends Fragment {
     }
 
 
+    protected boolean registerEventBus(){
+        return false;
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getData(getArguments());
+        if (registerEventBus()){
+            EventBus.getDefault().register(this);
+        }
         initView();
         initData();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (registerEventBus()){
+            EventBus.getDefault().unregister(this);
+        }
     }
 
     protected void initData() {

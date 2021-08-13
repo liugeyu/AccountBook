@@ -2,22 +2,20 @@ package com.geyu.my.ui.viewmodel
 
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.serializer.SerializerFeature
-import com.geyu.base.BaseViewModel
 import com.geyu.database.ben.Account
 import com.geyu.database.ben.AccountBook
 import com.geyu.database.ben.CategoryModel
 import com.geyu.database.ben.Record
-import com.geyu.db.AccountBookManager
-import com.geyu.db.AccountManager
-import com.geyu.db.CategroyManager
-import com.geyu.db.RecordDaoManager
+import com.geyu.manager.db.AccountBookManager
+import com.geyu.manager.db.AccountManager
+import com.geyu.manager.db.CategroyManager
+import com.geyu.manager.db.RecordDaoManager
 import com.geyu.my.ben.DataExport
 import com.geyu.my.ui.contract.My_BackupContract
 import com.geyu.rx.LoadingObserver
 import com.geyu.utils.FileUtil
 import com.geyu.utils.TimeUtil
 import io.reactivex.Observable
-import io.reactivex.Observer
 import java.io.File
 import java.io.FileWriter
 

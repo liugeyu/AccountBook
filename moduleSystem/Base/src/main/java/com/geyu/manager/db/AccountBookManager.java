@@ -1,7 +1,9 @@
-package com.geyu.db;
+package com.geyu.manager.db;
 
 import com.geyu.base.BaseApplication;
+import com.geyu.database.AccountBookDao;
 import com.geyu.database.ben.AccountBook;
+import com.geyu.manager.SpManager;
 import com.geyu.rx.RxSchedulersHelper;
 
 import java.util.List;
@@ -12,7 +14,11 @@ import io.reactivex.ObservableEmitter;
 public class AccountBookManager {
 
     public static long getAccountBookId(){
-        return 0;
+        return SpManager.AccountBooks.getSelectId();
+    }
+
+    public static AccountBook findAccountBook(){
+        return BaseApplication.getmDaoSession().getAccountBookDao().queryBuilder().where(AccountBookDao.Properties.AccountBookId.eq(getAccountBookId())).unique();
     }
 
 

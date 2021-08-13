@@ -3,7 +3,7 @@ package com.geyu.home.ui.viewmodel;
 
 import com.geyu.callback.event.RecordChanager;
 import com.geyu.database.ben.Record;
-import com.geyu.db.RecordDaoManager;
+import com.geyu.manager.db.RecordDaoManager;
 import com.geyu.home.ui.contract.Home_HomeContract;
 import com.geyu.rx.RxSchedulersHelper;
 import com.geyu.utils.ErrHandler;
@@ -13,9 +13,11 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
+import java.util.Map;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 
 public class Home_HomeViewModel extends Home_HomeContract.ViewMode {
@@ -31,15 +33,13 @@ public class Home_HomeViewModel extends Home_HomeContract.ViewMode {
         page = 0;
         Disposable disposable = RecordDaoManager.findRecords(page,pageSize)
                 .compose(RxSchedulersHelper.applyIoTransformer())
-                .subscribe((rs) ->{
-                    homeDatas.setValue(rs);
-                },throwable -> {
+                .subscribe((rs) -> homeDatas.setValue(rs), throwable -> {
                     showMessage(ErrHandler.getErrMsg(throwable));
                 });
         addDisposable(disposable);
     }
 
-    public LiveData<List<Record>> getRecord(){
+    public LiveData<List<Record>> getRecord() {
         return homeDatas;
     }
 
@@ -84,4 +84,10 @@ public class Home_HomeViewModel extends Home_HomeContract.ViewMode {
     public MutableLiveData<List<Record>> getLoadMore() {
         return loadMore;
     }
+
+    @Override
+    public Observable<List<Record>> getRecords(Map<String, Object> data) {
+        return RecordDaoManager.findRecords((Integer) data.get("page"),pageSize);
+    }
+
 }
