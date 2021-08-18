@@ -10,4 +10,14 @@
     <string name="remark">备注</string>
     <string name="time">时间</string>
     <string name="modify">修改</string>
+    <string name="add">添加</string>
+    <string name="everyday">日常</string>
+    <string name="business">生意</string>
+    <string name="human_feeling">人情</string>
+    <string name="investment">投资</string>
+    <string name="fitment">装修</string>
+    <string name="campus">校园</string>
+    <string name="travel">旅行</string>
+    <string name="select_billing_template">选择记账模板</string>
+    <string name="save">保存</string>
 </resources>

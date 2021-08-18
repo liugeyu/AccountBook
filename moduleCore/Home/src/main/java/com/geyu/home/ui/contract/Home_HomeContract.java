@@ -23,6 +23,7 @@ public class Home_HomeContract {
         void addNewRecord();
         void onItemClick(Record itemData, int position);
         void toSearch();
+        void selectAccountBook();
     }
 
     //

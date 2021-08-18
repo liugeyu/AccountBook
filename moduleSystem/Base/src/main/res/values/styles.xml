@@ -12,6 +12,64 @@
         <item name="android:layout_margin">1px</item>
     </style>
 
+
+
+    <style name="BaseDialogBottomFragmentStyle" parent="BaseDialogFragmentStyle">
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:windowAnimationStyle">
+            @style/BaseDialogBottomFragmentStyle.AnimationStyle
+        </item>
+
+
+    </style>
+
+    <style name="BaseDialogLeftFragmentStyle" parent="BaseDialogFragmentStyle">
+        <item name="android:windowAnimationStyle">
+            @style/BaseDialogLeftFragmentStyle.AnimationStyle
+        </item>
+    </style>
+
+    <style name="BaseDialogRightFragmentStyle" parent="BaseDialogFragmentStyle">
+        <item name="android:windowAnimationStyle">
+            @style/BaseDialogRightFragmentStyle.AnimationStyle
+        </item>
+    </style>
+
+    <style name="BaseDialogUpFragmentStyle" parent="BaseDialogFragmentStyle">
+        <item name="android:windowAnimationStyle">@style/BaseDialogUpFragmentStyle.AnimationStyle
+        </item>
+    </style>
+
+    <style name="BaseDialogBottomFragmentStyle.AnimationStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_base_dialog_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_base_dialog_bottom_out</item>
+    </style>
+
+    <style name="BaseDialogUpFragmentStyle.AnimationStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_base_dialog_up_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_base_dialog_up_out</item>
+    </style>
+
+    <style name="BaseDialogLeftFragmentStyle.AnimationStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_base_dialog_left_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_base_dialog_left_out</item>
+    </style>
+
+    <style name="BaseDialogRightFragmentStyle.AnimationStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_base_dialog_right_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_base_dialog_right_out</item>
+    </style>
+    <style name="BaseDialogFragmentStyle" parent="@android:style/Theme.DeviceDefault.Dialog">
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
     <style name="text_size_huge">
         <item name="android:textSize">@dimen/sp_18</item>
     </style>

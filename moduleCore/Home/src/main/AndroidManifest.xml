@@ -6,5 +6,7 @@
         <activity android:name=".ui.activity.Home_RecordEditActivity" />
         <activity android:name=".ui.activity.Home_recordDetailActivity" />
         <activity android:name=".ui.activity.Home_SearchActivity" />
+        <activity android:name=".ui.activity.Home_AddAccountBookActivity" />
+        <activity android:name=".ui.activity.Home_CreateAccountBookActivity" />
     </application>
 </manifest>

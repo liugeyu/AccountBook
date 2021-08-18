@@ -25,7 +25,12 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
     public BaseAdapter(Context context) {
         layoutInflater = LayoutInflater.from(context);
     }
-
+    public BaseAdapter(Context context,List<T> inDatas) {
+        layoutInflater = LayoutInflater.from(context);
+        if (inDatas != null && inDatas.size() > 0) {
+            this.datas.addAll(inDatas);
+        }
+    }
 
     public void setDatas(List<T> datas){
         if (datas != null) {

@@ -52,7 +52,7 @@ public class Home_RecordEditFragmentViewModel extends Home_RecordEditFragmentCon
 
 
    public void initCategory(int type){
-        Disposable disposable = CategroyManager.findAll(type)
+        Disposable disposable = CategroyManager.findByType(type)
                 .subscribe(datas ->{
                     categoryList.setValue(datas);
                 },throwable -> {

@@ -6,12 +6,12 @@ public class SpManager {
 
 
     public static class AccountBooks {
-        public static int getSelectId(){
-            return SharedPrefsUtils.getIntegerPreference("AccountBookId",0);
+        public static long getSelectId(){
+            return SharedPrefsUtils.getLongPreference("AccountBookId",0);
         }
 
-        public static void saveBookId(int bookId) {
-            SharedPrefsUtils.setIntegerPreference("AccountBookId",bookId);
+        public static void saveBookId(long bookId) {
+            SharedPrefsUtils.setLongPreference("AccountBookId",bookId);
         }
     }
 

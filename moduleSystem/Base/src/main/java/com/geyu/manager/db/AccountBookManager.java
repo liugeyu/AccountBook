@@ -6,6 +6,8 @@ import com.geyu.database.ben.AccountBook;
 import com.geyu.manager.SpManager;
 import com.geyu.rx.RxSchedulersHelper;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -28,5 +30,11 @@ public class AccountBookManager {
             emitter.onNext(accountBooks);
             emitter.onComplete();
         }).compose(RxSchedulersHelper.applyIoTransformer());
+    }
+
+    public static void save(@Nullable AccountBook accountBook) {
+        if (accountBook != null) {
+            BaseApplication.getmDaoSession().getAccountBookDao().save(accountBook);
+        }
     }
 }

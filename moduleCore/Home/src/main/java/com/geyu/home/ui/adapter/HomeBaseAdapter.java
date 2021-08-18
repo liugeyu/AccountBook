@@ -7,6 +7,8 @@ import com.geyu.adapter.BaseAdapter;
 import com.geyu.adapter.BaseViewHolder;
 import com.geyu.home.BR;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
 
@@ -14,7 +16,9 @@ public abstract class HomeBaseAdapter<T> extends BaseAdapter<T> {
     public HomeBaseAdapter(Context context) {
         super(context);
     }
-
+    public HomeBaseAdapter(Context context, List<T> ts) {
+        super(context,ts);
+    }
 
    public static class HomeBaseViewHolder extends BaseViewHolder{
 

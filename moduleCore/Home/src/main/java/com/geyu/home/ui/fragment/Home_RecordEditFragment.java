@@ -118,7 +118,12 @@ public class Home_RecordEditFragment extends BaseMvvmFragment<Home_RecordEditFra
             showErrMessage("请输入金额");
             return;
         }
-        mViewModel.saveOrUpdateRecord(mDataBinding.tvAmount.getText().toString().replace("¥:","").trim(),adapter.getSelect(),oldRecord);
+        CategoryModel categoryModel = adapter.getSelect();
+        if (categoryModel == null) {
+            showErrMessage("无记录类型,无法添加");
+            return;
+        }
+        mViewModel.saveOrUpdateRecord(mDataBinding.tvAmount.getText().toString().replace("¥:","").trim(),categoryModel,oldRecord);
         onBack();
     }
 }

@@ -20,6 +20,7 @@ import com.geyu.home.ui.activity.Home_SearchActivity;
 import com.geyu.home.ui.activity.Home_recordDetailActivity;
 import com.geyu.home.ui.adapter.Home_HomeAdapter;
 import com.geyu.home.ui.contract.Home_HomeContract;
+import com.geyu.home.ui.dialog.SelectAccountBookDialogFragment;
 import com.geyu.home.ui.view.RefreshRecyclerNetConfig;
 import com.geyu.home.ui.viewmodel.Home_HomeViewModel;
 import com.geyu.manager.db.AccountBookManager;
@@ -91,6 +92,7 @@ public class Home_HomeFragment extends BaseMvvmFragment<Home_HomeViewModel, Home
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onRecrodChanager(RecordChanager event){
+        mDataBinding.setAccountBook(AccountBookManager.findAccountBook());
         mDataBinding.rv.firstLoad();
     }
 
@@ -120,6 +122,12 @@ public class Home_HomeFragment extends BaseMvvmFragment<Home_HomeViewModel, Home
         }else {
             ToActivity.toActivity(mActivity, Home_SearchActivity.class);
         }
+    }
+
+    @Override
+    public void selectAccountBook() {
+        SelectAccountBookDialogFragment dialogFragment = new SelectAccountBookDialogFragment();
+        dialogFragment.show(mActivity.getSupportFragmentManager());
     }
 
     @Override

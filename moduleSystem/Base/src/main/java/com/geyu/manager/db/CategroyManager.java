@@ -5,6 +5,8 @@ import com.geyu.database.CategoryModelDao;
 import com.geyu.database.ben.CategoryModel;
 import com.geyu.rx.RxSchedulersHelper;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -13,7 +15,7 @@ import io.reactivex.ObservableEmitter;
 public class CategroyManager {
 
 
-    public static Observable<List<CategoryModel>> findAll(int type){
+    public static Observable<List<CategoryModel>> findByType(int type){
         return Observable.just(type)
                 .map(integer -> find(type)).compose(RxSchedulersHelper.applyIoTransformer());
 
@@ -28,7 +30,15 @@ public class CategroyManager {
     }
 
     public static List<CategoryModel> find(int type) {
-        return BaseApplication.getmDaoSession().getCategoryModelDao().queryBuilder().where(CategoryModelDao.Properties.Type.eq(type)).list();
+        return BaseApplication.getmDaoSession().getCategoryModelDao().queryBuilder()
+                .where(CategoryModelDao.Properties.Type.eq(type),CategoryModelDao.Properties.AccountBookId.eq(AccountBookManager.getAccountBookId()))
+                .list();
+    }
+
+    public static void save(@NotNull CategoryModel other) {
+        if (other != null) {
+            BaseApplication.getmDaoSession().getCategoryModelDao().save(other);
+        }
     }
 
 //    public static void test(){
