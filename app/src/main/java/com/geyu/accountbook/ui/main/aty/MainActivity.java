@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.alibaba.fastjson.JSON;
 import com.geyu.Constant;
 import com.geyu.accountbook.R;
 import com.geyu.accountbook.databinding.ActivityMainBinding;
@@ -15,13 +16,21 @@ import com.geyu.accountbook.ui.main.viewmodel.MainViewModel;
 import com.geyu.base.Annotation.CreateViewModel;
 import com.geyu.base.BaseFragment;
 import com.geyu.base.BaseMvvmActivity;
+import com.geyu.callback.event.SwitchLanguage;
 import com.geyu.service.TestService;
+import com.geyu.utils.LLOG;
 import com.geyu.utils.SystemBarTintManagerHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.umeng.analytics.MobclickAgent;
 
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import androidx.annotation.NonNull;
@@ -50,10 +59,16 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBi
     }
 
 
+
     @Override
     protected void initView() {
+        EventBus.getDefault().register(this);
 
+        List<String> file = new ArrayList<>();
+        String[] fineNames = new String[file.size()];
+        file.toArray(fineNames);
 
+        LLOG.e("空数组"+ JSON.toJSONString(fineNames));
         SystemBarTintManagerHelper.getInsatance().titleBarPaddingTop(mDataBinding.container);
 
         mDataBinding.navView.setOnNavigationItemSelectedListener(this);
@@ -122,5 +137,17 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBi
             }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void switchLanguage(SwitchLanguage switchLanguage) {
+        startActivity(new Intent(this, MainActivity.class));
+        overridePendingTransition(R.anim.activity_alpha_in, R.anim.activity_alpha_out);
+        finish();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

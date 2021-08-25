@@ -7,10 +7,10 @@ import com.geyu.utils.ToastUtil;
 import com.geyu.view.dialog.BaseDialogFragment;
 import com.geyu.view.dialog.LoadingDialog;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModelProvider;
-
 public abstract class BaseMvvmActivity<VM extends BaseViewModel,VDB extends ViewDataBinding> extends BaseActivity{
 
     protected VDB mDataBinding;

@@ -6,6 +6,7 @@ import android.content.Context;
 import com.geyu.database.DaoMaster;
 import com.geyu.database.DaoSession;
 import com.geyu.database.help.SQLiteOpenHelper;
+import com.geyu.utils.language.MultiLanguages;
 
 import androidx.multidex.MultiDex;
 
@@ -18,6 +19,7 @@ public class BaseApplication extends Application {
         MultiDex.install(this);
         mContext = this;
         initSql();
+        MultiLanguages.init(this);
     }
 
 
@@ -29,6 +31,11 @@ public class BaseApplication extends Application {
         SQLiteOpenHelper openHelper = new SQLiteOpenHelper(this, "accountBook");
         DaoMaster daoMaster = new DaoMaster(openHelper.getWritableDatabase());
         mDaoSession = daoMaster.newSession();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(MultiLanguages.attach(base));
     }
 
     public static DaoSession getmDaoSession(){

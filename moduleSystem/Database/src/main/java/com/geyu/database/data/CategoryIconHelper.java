@@ -66,4 +66,8 @@ public class CategoryIconHelper {
     /** 红酒 */
     public static final String IC_NAME_WINE = "Wine";
 
+    /**
+     * 设置
+     */
+    public static final String IC_SETTING = "setting";
 }

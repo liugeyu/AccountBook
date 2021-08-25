@@ -1,6 +1,7 @@
 package com.geyu.adapter;
 
 import com.geyu.base.BaseFragment;
+import com.geyu.ben.FragmentBen;
 
 import java.util.List;
 
@@ -13,23 +14,22 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 public class BaseFragmentPageAdapter extends FragmentStateAdapter {
 
-    private List<Class<? extends BaseFragment>> fragments;
-    public BaseFragmentPageAdapter(@NonNull FragmentActivity fragmentActivity) {
+    private List<FragmentBen> fragments;
+
+    public BaseFragmentPageAdapter(List<FragmentBen> fragments,@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
+        this.fragments = fragments;
     }
 
-    public BaseFragmentPageAdapter(@NonNull Fragment fragment) {
+    public BaseFragmentPageAdapter(List<FragmentBen> fragments,@NonNull Fragment fragment) {
         super(fragment);
-    }
-
-    public BaseFragmentPageAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
-        super(fragmentManager, lifecycle);
+        this.fragments = fragments;
     }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return BaseFragment.newInstance(fragments.get(position));
+        return BaseFragment.newInstance(fragments.get(position).getFragment()).bindData(fragments.get(position).getT());
     }
 
     @Override

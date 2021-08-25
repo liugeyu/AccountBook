@@ -8,12 +8,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AccountBook">
+        android:theme="@style/Theme.AccountBook"
+        android:name="com.debug.App">
+        <activity android:name="com.debug.Home_MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.activity.Home_RecordEditActivity" />
         <activity android:name=".ui.activity.Home_recordDetailActivity" />
         <activity android:name=".ui.activity.Home_SearchActivity" />
         <activity android:name=".ui.activity.Home_AddAccountBookActivity" />
         <activity android:name=".ui.activity.Home_CreateAccountBookActivity" />
+        <activity android:name=".ui.activity.Home_CategoryManagerActivity" />
     </application>
 
 </manifest>

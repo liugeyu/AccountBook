@@ -11,15 +11,15 @@
     <string name="num_7">7</string>
     <string name="num_8">8</string>
     <string name="num_9">9</string>
-    <string name="num_clean_to_0">清零</string>
+    <string name="num_clean_to_0">reset</string>
     <string name="symbol_dot">.</string>
-    <string name="ok">确定</string>
+    <string name="ok">confirm</string>
 
 
-    <string name="date_format_y_m_d">%d年%02d月%02d日</string>
-    <string name="date_format_m_d">%02d月%02d日</string>
-    <string name="date_format_y_m">%d年%%02d月</string>
-    <string name="date_format_today_time">今天 %02d:%02d</string>
-    <string name="file_size">文件大小: %.2fKB</string>
+    <string name="date_format_y_m_d">%d year %02d month %02d day</string>
+    <string name="date_format_m_d">%02d month %02d day</string>
+    <string name="date_format_y_m">%d year %02d month</string>
+    <string name="date_format_today_time">Today %02d:%02d</string>
+    <string name="file_size">FileSize: %.2fKB</string>
 
 </resources>

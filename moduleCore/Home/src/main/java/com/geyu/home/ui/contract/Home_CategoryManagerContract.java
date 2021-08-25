@@ -1,16 +1,13 @@
-package com.geyu.my.ui.contract;
+package com.geyu.home.ui.contract;
 
 import com.geyu.base.BaseViewModel;
 
-public class My_MyContract {
-
+public class Home_CategoryManagerContract {
     public static abstract class ViewModel extends BaseViewModel {
 
     }
 
     public interface View{
-        void backup();
-        void about();
-        void switchLanguage();
+
     }
 }

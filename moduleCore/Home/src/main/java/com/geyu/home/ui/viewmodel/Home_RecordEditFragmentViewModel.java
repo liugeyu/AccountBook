@@ -3,6 +3,7 @@ package com.geyu.home.ui.viewmodel;
 import com.geyu.callback.event.RecordChanager;
 import com.geyu.database.ben.CategoryModel;
 import com.geyu.database.ben.Record;
+import com.geyu.database.data.CategoryIconHelper;
 import com.geyu.manager.db.AccountBookManager;
 import com.geyu.manager.db.AccountManager;
 import com.geyu.manager.db.CategroyManager;
@@ -21,6 +22,7 @@ import io.reactivex.disposables.Disposable;
 public class Home_RecordEditFragmentViewModel extends Home_RecordEditFragmentContract.ViewModel {
     MutableLiveData<List<CategoryModel>> categoryList = new MutableLiveData<>();
 
+    private CategoryModel setting = new CategoryModel();
     @Override
     public void saveOrUpdateRecord(String amt, CategoryModel categoryModel, Record oldRecord) {
         if (oldRecord == null){
@@ -54,6 +56,8 @@ public class Home_RecordEditFragmentViewModel extends Home_RecordEditFragmentCon
    public void initCategory(int type){
         Disposable disposable = CategroyManager.findByType(type)
                 .subscribe(datas ->{
+                    setting.setType(type);
+                    datas.add(setting);
                     categoryList.setValue(datas);
                 },throwable -> {
 
@@ -63,5 +67,8 @@ public class Home_RecordEditFragmentViewModel extends Home_RecordEditFragmentCon
     @Override
     public void onCreate() {
         super.onCreate();
+        setting.setIcon(CategoryIconHelper.IC_SETTING);
+        setting.setName("管理分类");
+        setting.setAccountBookId(AccountManager.getAccountId());
     }
 }

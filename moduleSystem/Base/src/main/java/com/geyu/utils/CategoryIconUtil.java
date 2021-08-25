@@ -43,6 +43,8 @@ public class CategoryIconUtil extends CategoryIconHelper {
                 return R.drawable.selector_category_ren_qin;
             case IC_NAME_XUE_XI:
                 return R.drawable.selector_category_xue_xi;
+            case IC_SETTING:
+                return R.drawable.selector_category_setting;
             default:
                 return R.drawable.selector_category_other;
         }

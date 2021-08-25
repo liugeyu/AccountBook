@@ -8,9 +8,11 @@ import com.geyu.base.BaseMvvmFragment;
 import com.geyu.callback.NumericKeypadConfirm;
 import com.geyu.database.ben.CategoryModel;
 import com.geyu.database.ben.Record;
+import com.geyu.database.data.CategoryIconHelper;
 import com.geyu.home.BR;
 import com.geyu.home.R;
 import com.geyu.home.databinding.HomeFragmentRecordEditBinding;
+import com.geyu.home.ui.activity.Home_CategoryManagerActivity;
 import com.geyu.home.ui.adapter.CategoryAdapter;
 import com.geyu.home.ui.contract.Home_RecordEditFragmentContract;
 import com.geyu.home.ui.viewmodel.Home_RecordEditFragmentViewModel;
@@ -74,7 +76,11 @@ public class Home_RecordEditFragment extends BaseMvvmFragment<Home_RecordEditFra
 
 
     public void categoryItemClick(CategoryModel item,int position) {
-        selectedItem(item.getUniqueName());
+        if (CategoryIconHelper.IC_SETTING.equals(item.getIcon())) {
+            ToActivity.toActivity(mActivity, Home_CategoryManagerActivity.class);
+        } else {
+            selectedItem(item.getUniqueName());
+        }
     }
 
     public void selectedItem(String uniqueName) {

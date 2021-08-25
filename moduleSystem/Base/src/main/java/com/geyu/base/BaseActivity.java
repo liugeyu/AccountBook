@@ -1,11 +1,13 @@
 package com.geyu.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.geyu.utils.ScreenManager;
 import com.geyu.utils.SystemBarTintManagerHelper;
+import com.geyu.utils.language.MultiLanguages;
 import com.geyu.utils.swipeWindowHelper.SwipeWindowHelper;
 import com.geyu.view.TopBar;
 
@@ -29,6 +31,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         compositeDisposable.add(disposable);
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(MultiLanguages.attach(newBase));
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
