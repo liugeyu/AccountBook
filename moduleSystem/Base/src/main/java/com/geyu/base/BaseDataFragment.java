@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.geyu.base.BaseFragment;
 import com.geyu.base.BaseViewModel;
 import com.geyu.base.ViewModelFactoryImpl;
+import com.geyu.utils.ToastUtil;
 
 import java.io.Serializable;
 
@@ -26,9 +27,18 @@ public abstract class BaseDataFragment<D extends Serializable,VM extends BaseVie
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mDataBinding = DataBindingUtil.inflate(inflater,getLayoutId(),container,false);
         mViewModel = ViewModelFactoryImpl.getInstance().createViewModel(this);
+        getLifecycle().addObserver(mViewModel);
+        mDataBinding.setLifecycleOwner(this);
+        initErrMsg();
         return mDataBinding.getRoot();
 
     }
+    protected  void initErrMsg() {
+        mViewModel.getMessage().observe(getViewLifecycleOwner(), this::showErrMessage);
+    }
 
+    protected void showErrMessage(String errMsg){
+        ToastUtil.showToast(errMsg);
+    }
     protected abstract int getLayoutId();
 }

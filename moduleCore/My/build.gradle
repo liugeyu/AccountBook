@@ -4,6 +4,7 @@ if (rootProject.myIsModule) {
     apply plugin: 'com.android.application'
 }
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -50,5 +51,5 @@ android {
 dependencies {
 
     implementation project(path: ':moduleSystem:Base')
-    annotationProcessor rootProject.dependenciesJar.aroutercompiler
+    kapt rootProject.dependenciesJar.aroutercompiler
 }

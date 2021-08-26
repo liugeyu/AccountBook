@@ -1,7 +1,6 @@
-package com.geyu.database.help;
+package com.geyu.help;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.geyu.database.AccountBookDao;
@@ -9,11 +8,7 @@ import com.geyu.database.AccountDao;
 import com.geyu.database.CategoryModelDao;
 import com.geyu.database.DaoMaster;
 import com.geyu.database.RecordDao;
-import com.geyu.database.ben.AccountBook;
 import com.geyu.database.ben.CategoryItem;
-import com.geyu.database.ben.CategoryModel;
-import com.geyu.database.data.CategoryConstant;
-import com.geyu.database.data.CategoryIconHelper;
 import com.github.yuweiguocn.library.greendao.MigrationHelper;
 
 import org.greenrobot.greendao.database.Database;
@@ -24,7 +19,6 @@ public class SQLiteOpenHelper extends DaoMaster.OpenHelper{
     public SQLiteOpenHelper(Context context, String name) {
         super(context, name);
     }
-
     @Override
     public void onCreate(Database db) {
         super.onCreate(db);

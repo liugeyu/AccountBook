@@ -1,4 +1,4 @@
-package com.geyu.accountbook.ui.main.aty;
+ package com.geyu.accountbook.ui.main.aty;
 
 import android.content.Intent;
 import android.util.Log;
@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
@@ -42,6 +43,9 @@ import androidx.fragment.app.FragmentTransaction;
 public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBinding> implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
+    @Autowired
+    String test;
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return super.dispatchTouchEvent(ev);
@@ -53,6 +57,7 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBi
     }
 
 
+
     @Override
     protected boolean isSupportSlideBack() {
         return false;
@@ -62,6 +67,9 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBi
 
     @Override
     protected void initView() {
+        ARouter.getInstance().inject(this);
+        LLOG.e(test+"   -----------------");
+
         EventBus.getDefault().register(this);
 
         List<String> file = new ArrayList<>();
@@ -90,6 +98,7 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel, ActivityMainBi
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        LLOG.e(test+"sb");
         switch (item.getItemId()) {
             case R.id.navigation_home:
                 showFragment(R.id.nav_host_fragment, (BaseFragment) ARouter.getInstance().build(Constant.HomeClass.FRAGMENT_HOME).navigation());

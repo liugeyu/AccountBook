@@ -15,6 +15,8 @@ import java.io.Serializable;
 public class AccountBook implements Serializable {
     @Transient
     private static final long serialVersionUID = -4683833882623657815L;
+    @Transient
+    public boolean isEdit;
 
     @Id
     private Long id;

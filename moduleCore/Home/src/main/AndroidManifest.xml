@@ -9,6 +9,7 @@
         <activity android:name=".ui.activity.Home_AddAccountBookActivity" />
         <activity android:name=".ui.activity.Home_CreateAccountBookActivity" />
         <activity android:name=".ui.activity.Home_CategoryManagerActivity" />
+        <activity android:name=".ui.activity.Home_AccountBookEditActivity" />
     </application>
 
 </manifest>

@@ -3,7 +3,7 @@ package com.geyu.utils;
 import android.text.TextUtils;
 
 import com.geyu.base.R;
-import com.geyu.database.data.CategoryIconHelper;
+import com.geyu.data.CategoryIconHelper;
 
 public class CategoryIconUtil extends CategoryIconHelper {
 

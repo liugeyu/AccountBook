@@ -17,7 +17,7 @@ public class FragmentBen<T extends Serializable> {
     }
     public FragmentBen(Class<? extends BaseFragment> clzz, T t){
         fragment = clzz;
-        t = t;
+        this.t = t;
     }
     public T getT() {
         return t;

@@ -6,6 +6,7 @@ import com.geyu.database.ben.AccountBook;
 import com.geyu.manager.SpManager;
 import com.geyu.rx.RxSchedulersHelper;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -32,9 +33,21 @@ public class AccountBookManager {
         }).compose(RxSchedulersHelper.applyIoTransformer());
     }
 
+    public static long getAccountBookCount(){
+        return BaseApplication.getmDaoSession().getAccountBookDao().queryBuilder().count();
+    }
+
     public static void save(@Nullable AccountBook accountBook) {
         if (accountBook != null) {
             BaseApplication.getmDaoSession().getAccountBookDao().save(accountBook);
         }
+    }
+
+    public static void delete(@NotNull AccountBook accountBook) {
+        BaseApplication.getmDaoSession().getAccountBookDao().delete(accountBook);
+    }
+
+    public static void saveOrUpdate(@NotNull AccountBook accountBook) {
+        BaseApplication.getmDaoSession().getAccountBookDao().insertOrReplace(accountBook);
     }
 }

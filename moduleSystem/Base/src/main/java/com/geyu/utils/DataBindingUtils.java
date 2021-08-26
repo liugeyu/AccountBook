@@ -8,13 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.geyu.base.R;
-import com.geyu.database.data.CategoryIconHelper;
-
-import java.text.MessageFormat;
-import java.util.logging.Logger;
 
 import androidx.databinding.BindingAdapter;
-import androidx.databinding.DataBindingUtil;
 
 public class DataBindingUtils {
 

@@ -7,6 +7,7 @@ import com.geyu.manager.db.RecordDaoManager;
 import com.geyu.home.ui.contract.Home_HomeContract;
 import com.geyu.rx.RxSchedulersHelper;
 import com.geyu.utils.ErrHandler;
+import com.geyu.utils.LLOG;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -47,6 +48,7 @@ public class Home_HomeViewModel extends Home_HomeContract.ViewMode {
     @Override
     public void onCreate() {
         super.onCreate();
+        LLOG.e("home on create");
         getHomeData();
         EventBus.getDefault().register(this);
     }

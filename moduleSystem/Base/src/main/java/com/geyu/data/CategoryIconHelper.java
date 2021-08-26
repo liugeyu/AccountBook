@@ -1,6 +1,4 @@
-package com.geyu.database.data;
-
-import com.geyu.database.R;
+package com.geyu.data;
 
 public class CategoryIconHelper {
     /** 其他 */

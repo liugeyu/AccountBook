@@ -1,4 +1,4 @@
-package com.geyu.database.data;
+package com.geyu.data;
 
 /**
  * 类别固定名称

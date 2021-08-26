@@ -5,8 +5,8 @@ import com.geyu.base.BaseMvvmActivity
 import com.geyu.callback.event.RecordChanager
 import com.geyu.database.ben.AccountBook
 import com.geyu.database.ben.CategoryModel
-import com.geyu.database.data.CategoryConstant
-import com.geyu.database.data.CategoryIconHelper
+import com.geyu.data.CategoryConstant
+import com.geyu.data.CategoryIconHelper
 import com.geyu.home.R
 import com.geyu.home.databinding.HomeActivityCreateAccountBooksBinding
 import com.geyu.home.ui.contract.Home_CreateAccountBookContract
@@ -41,7 +41,7 @@ class Home_CreateAccountBookActivity: BaseMvvmActivity<Home_CreateAccountBookVie
         AccountBookManager.save(accountBook)
 
         EventBus.getDefault().post(RecordChanager())
-        showErrMessage("保存成功")
+        showErrMessage(getString(R.string.save_succ))
         onBack()
     }
 

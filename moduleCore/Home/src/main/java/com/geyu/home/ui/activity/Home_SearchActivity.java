@@ -20,7 +20,6 @@ import com.geyu.utils.ToActivity;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 @CreateViewModel(Home_SearchViewModel.class)
 public class Home_SearchActivity extends BaseMvvmActivity<Home_SearchContract.ViewModel, HomeActivitySearchBinding> implements TextView.OnEditorActionListener, Home_SearchContract.View {
     private SearchAdapter adapter;

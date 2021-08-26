@@ -15,6 +15,8 @@
         <variable
             name="listener"
             type="com.geyu.base.BaseMvvmView" />
+
+        <import type="android.view.View"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,6 +44,23 @@
             android:ems="1"
             android:text="@{itemData.accountBookName}"
             tools:text="日常"/>
+
+        <FrameLayout
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/transparent_bg"
+            android:visibility="@{itemData.isEdit ? View.VISIBLE:View.GONE}">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_edit"/>
+        </FrameLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

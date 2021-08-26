@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AccountBook</string>
+    <string name="about">about</string>
+    <string name="backup">backup</string>
+    <string name="my">my</string>
+    <string name="data_export">dataExport</string>
+    <string name="manager">management</string>
+    <string name="backup_manager">backupManagement</string>
+    <string name="delete">delete</string>
+    <string name="my_detail">details</string>
+    <string name="language">language</string>
+</resources>

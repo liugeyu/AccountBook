@@ -1,9 +1,9 @@
-package com.geyu.database.help;
+package com.geyu.help;
 
 import com.geyu.database.ben.CategoryItem;
 import com.geyu.database.ben.CategoryModel;
-import com.geyu.database.data.CategoryConstant;
-import com.geyu.database.data.CategoryIconHelper;
+import com.geyu.data.CategoryConstant;
+import com.geyu.data.CategoryIconHelper;
 
 import java.util.ArrayList;
 import java.util.List;

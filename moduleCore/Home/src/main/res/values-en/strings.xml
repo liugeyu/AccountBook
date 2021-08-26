@@ -20,4 +20,11 @@
     <string name="travel">travel</string>
     <string name="select_billing_template">selectABillingTemplate</string>
     <string name="save">save</string>
+    <string name="tally_book">TallyBook</string>
+    <string name="save_succ">save successfully</string>
+    <string name="manager">Manager</string>
+    <string name="modify_book">ModifyBook</string>
+    <string name="book_name">TheNameOfTheBook</string>
+    <string name="delete">Delete</string>
+    <string name="least_one_ledger">at least one ledger</string>
 </resources>

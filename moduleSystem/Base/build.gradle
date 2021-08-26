@@ -51,5 +51,5 @@ dependencies {
     api rootProject.dependenciesJar.fastjson
     api rootProject.dependenciesJar.NewbieGuide
     api project(path: ':moduleSystem:Database')
-
+    implementation 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v2.0.0'
 }

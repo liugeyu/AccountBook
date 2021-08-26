@@ -2,11 +2,7 @@ package com.geyu.accountbook;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.geyu.base.BaseApplication;
-import com.geyu.database.DaoMaster;
-import com.geyu.database.DaoSession;
-import com.geyu.database.help.SQLiteOpenHelper;
 import com.geyu.youmenlib.helper.PushHelper;
-import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 
 public class App extends BaseApplication {

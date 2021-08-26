@@ -52,7 +52,7 @@ public class My_MyFragment extends BaseMvvmFragment<My_MyViewModel, MyFragmentMy
     @Override
     public void switchLanguage() {
         final String[] cities = {"中文","英文"};
-        final String[] locals = {"zh_CN", "en"};
+        final String[] locals = {"zh", "en"};
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("选择语言");
@@ -63,7 +63,6 @@ public class My_MyFragment extends BaseMvvmFragment<My_MyViewModel, MyFragmentMy
 
                 if (restart) {
                     if (restart) {
-                        ARouter.getInstance().build(Constant.MainClass.ACTIVITY_MAIN).navigation();
 //                        mActivity.finish();
                         EventBus.getDefault().post(new SwitchLanguage());
                     }

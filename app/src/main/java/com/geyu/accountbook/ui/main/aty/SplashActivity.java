@@ -34,7 +34,7 @@ public class SplashActivity extends BaseMvvmActivity<SplashViewModel, ActivitySp
                 .subscribe(l -> {
                     LLOG.d("timer" + l);
                 }, throwable -> {}, () -> {
-                    ARouter.getInstance().build(Constant.MainClass.ACTIVITY_MAIN).navigation();
+                    ARouter.getInstance().build(Constant.MainClass.ACTIVITY_MAIN).withString("test","11").navigation(this);
                     finish();
                 });
         addDisposable(disposable);
