@@ -6,8 +6,13 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Transient;
 
+import java.io.Serializable;
+
 @Entity
-public class CategoryModel {
+public class CategoryModel implements Serializable {
+
+    @Transient
+    private static final long serialVersionUID = -4683833882623657815L;
 
     public static final int TYPE_EXPENSE = 0;
 

@@ -13,6 +13,7 @@ public class CategoryIconUtil extends CategoryIconHelper {
         }
 
         switch (categoryIcName) {
+            case IC_NAME_INCOME_OTHER:
             case IC_NAME_OTHER:
                 return R.drawable.selector_category_other;
             case IC_NAME_CAN_YIN:

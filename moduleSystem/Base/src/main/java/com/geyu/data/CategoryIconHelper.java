@@ -34,6 +34,8 @@ public class CategoryIconHelper {
     /** 人情来往 */
     public static final String IC_NAME_REN_QING = "RenQing";
 
+    /** 其他 */
+    public static final String IC_NAME_INCOME_OTHER = "Income_Other";
     /** 薪资 */
     public static final String IC_NAME_XIN_ZI = "XinZi";
     /** 奖金 */

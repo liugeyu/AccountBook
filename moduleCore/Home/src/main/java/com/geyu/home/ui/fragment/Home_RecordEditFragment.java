@@ -6,6 +6,7 @@ import com.geyu.base.Annotation.CreateViewModel;
 import com.geyu.base.BaseFragment;
 import com.geyu.base.BaseMvvmFragment;
 import com.geyu.callback.NumericKeypadConfirm;
+import com.geyu.callback.event.CategoryAdd;
 import com.geyu.database.ben.CategoryModel;
 import com.geyu.database.ben.Record;
 import com.geyu.data.CategoryIconHelper;
@@ -17,6 +18,9 @@ import com.geyu.home.ui.contract.Home_RecordEditFragmentContract;
 import com.geyu.home.ui.viewmodel.Home_RecordEditFragmentViewModel;
 import com.geyu.utils.AmountUtil;
 import com.geyu.utils.ToActivity;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,6 +45,10 @@ public class Home_RecordEditFragment extends BaseMvvmFragment<Home_RecordEditFra
         return baseFragment;
     }
 
+    @Override
+    protected boolean registerEventBus() {
+        return true;
+    }
 
     @Override
     protected int getLayoutId() {
@@ -53,25 +61,20 @@ public class Home_RecordEditFragment extends BaseMvvmFragment<Home_RecordEditFra
         mDataBinding.numberKeypad.setEditText(mDataBinding.tvAmount);
         mDataBinding.numberKeypad.setListener(this);
 
-        mDataBinding.categoryRv.setLayoutManager(new GridLayoutManager(mActivity,2, LinearLayoutManager.HORIZONTAL,false));
+        mDataBinding.categoryRv.setLayoutManager(new GridLayoutManager(mActivity,6, LinearLayoutManager.VERTICAL,false));
 
         adapter = new CategoryAdapter(mActivity);
         mDataBinding.categoryRv.setAdapter(adapter);
 
         adapter.setListener(this);
-//        pagerSnapHelper = new PagerSnapHelper();
-//
-//        pagerSnapHelper.attachToRecyclerView(mDataBinding.categoryRv);
-//
-//        mDataBinding.categoryRv.addOnScrollListener(new OnPageChanageListenner(pagerSnapHelper) {
-//            @Override
-//            public void onPageSelected(int position) {
-//                LLOG.e("翻页"+position);
-//            }
-//        });
 
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void categoryAdd(CategoryAdd categoryAdd) {
+        mViewModel.initCategory(type);
+    }
 
 
     public void categoryItemClick(CategoryModel item,int position) {
@@ -128,7 +131,7 @@ public class Home_RecordEditFragment extends BaseMvvmFragment<Home_RecordEditFra
             showErrMessage("无记录类型,无法添加");
             return;
         }
-        mViewModel.saveOrUpdateRecord(mDataBinding.tvAmount.getText().toString().replace("¥:","").trim(),categoryModel,oldRecord);
+        mViewModel.saveOrUpdateRecord(mDataBinding.tvAmount.getText().toString().replace("¥:","").trim(),categoryModel,oldRecord,mDataBinding.remark.getText().toString());
         onBack();
     }
 }

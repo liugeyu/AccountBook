@@ -20,6 +20,11 @@ public class Home_CategoryManagerFragmentViewModel extends Home_categoryManagerF
     public void initData(int type) {
         mType = type;
         Disposable d = CategroyManager.findByType(type)
+                .doOnNext(categoryModels -> {
+                    for (CategoryModel categoryModel : categoryModels) {
+                        categoryModel.isSelect = true;
+                    }
+                })
                 .subscribe(categoryModels -> {
                     data.setValue(categoryModels);
                 },throwable -> showMessage(ErrHandler.getErrMsg(throwable)));

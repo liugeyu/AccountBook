@@ -11,7 +11,7 @@ import androidx.lifecycle.MutableLiveData;
 public class Home_RecordEditFragmentContract {
     public static abstract class ViewModel extends BaseViewModel{
 
-        public abstract void saveOrUpdateRecord(String amt, CategoryModel categoryModel, Record oldRecord);
+        public abstract void saveOrUpdateRecord(String amt, CategoryModel categoryModel, Record oldRecord,String remark);
 
         public abstract void initCategory(int type);
         public abstract MutableLiveData<List<CategoryModel>> getCategoryData();

@@ -18,7 +18,6 @@ public class CategroyManager {
     public static Observable<List<CategoryModel>> findByType(int type){
         return Observable.just(type)
                 .map(integer -> find(type)).compose(RxSchedulersHelper.applyIoTransformer());
-
     }
 
     public static Observable<List<CategoryModel>> findAll(){
@@ -35,9 +34,14 @@ public class CategroyManager {
                 .list();
     }
 
-    public static void save(@NotNull CategoryModel other) {
-        if (other != null) {
-            BaseApplication.getmDaoSession().getCategoryModelDao().save(other);
+    public static void save(@NotNull CategoryModel categoryModel) {
+        if (categoryModel != null) {
+            BaseApplication.getmDaoSession().getCategoryModelDao().save(categoryModel);
+        }
+    }
+    public static void saveOrUpdate(@NotNull CategoryModel categoryModel) {
+        if (categoryModel != null) {
+            BaseApplication.getmDaoSession().getCategoryModelDao().insertOrReplace(categoryModel);
         }
     }
 

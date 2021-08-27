@@ -1,5 +1,6 @@
 package com.geyu.home.ui.contract;
 
+import com.geyu.base.BaseMvvmView;
 import com.geyu.base.BaseViewModel;
 import com.geyu.database.ben.CategoryModel;
 
@@ -17,5 +18,7 @@ public class Home_categoryManagerFragmentContract {
 
     }
 
-    public interface View{}
+    public interface View extends BaseMvvmView<CategoryModel> {
+        void add();
+    }
 }

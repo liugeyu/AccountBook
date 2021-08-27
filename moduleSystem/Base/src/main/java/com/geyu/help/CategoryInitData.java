@@ -8,12 +8,12 @@ import com.geyu.data.CategoryIconHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-class CategoryInitData {
+public class CategoryInitData {
     /**
      * 支出初始化类型
      * @return
      */
-    static List<CategoryItem> getExpenseInitData(){
+    public static List<CategoryItem> getExpenseInitData(){
       List<CategoryItem> datas = new ArrayList<>();
       datas.add(getExpenseItem(CategoryConstant.NAME_OTHER_EXPENSE,"其他", CategoryIconHelper.IC_NAME_OTHER));
       datas.add(getExpenseItem(CategoryConstant.NAME_CAN_YIN,"餐饮", CategoryIconHelper.IC_NAME_CAN_YIN));
@@ -44,10 +44,10 @@ class CategoryInitData {
     /**
      * 获取收入初始化类型
      */
-    static List<CategoryItem> getIncomeInitData (){
+    public static List<CategoryItem> getIncomeInitData (){
         List<CategoryItem> datas = new ArrayList<>();
 
-        datas.add(getIncomeItem(CategoryConstant.NAME_OTHER_IN_COME,"其他",CategoryIconHelper.IC_NAME_OTHER));
+        datas.add(getIncomeItem(CategoryConstant.NAME_OTHER_IN_COME,"其他",CategoryIconHelper.IC_NAME_INCOME_OTHER));
         datas.add(getIncomeItem(CategoryConstant.NAME_XIN_ZI,"薪资",CategoryIconHelper.IC_NAME_XIN_ZI));
         datas.add(getIncomeItem(CategoryConstant.NAME_JIANG_JIN,"奖金",CategoryIconHelper.IC_NAME_JIANG_JIN));
         datas.add(getIncomeItem(CategoryConstant.NAME_JIE_RU,"借入",CategoryIconHelper.IC_NAME_JIE_RU));

@@ -1,6 +1,5 @@
 package com.geyu;
 
-import java.io.FileInputStream;
 
 public final class Constant {
 
@@ -14,6 +13,8 @@ public final class Constant {
 
 
         public static final String ACTIVITY_HOME_ACCOUNT_BOOK_EDIT = "/home/AccountBookEditActivity";
+
+        public static final String ACTIVITY_HOME_ADD_CATEGORY = "/home/AddCategoryActivity";
     }
 
     public static class StatisticsClass {
@@ -22,7 +23,6 @@ public final class Constant {
 
     public static class MyClass{
         public static final String FRAGMENT_MY = "/my/MyFragment";
-
     }
 
 

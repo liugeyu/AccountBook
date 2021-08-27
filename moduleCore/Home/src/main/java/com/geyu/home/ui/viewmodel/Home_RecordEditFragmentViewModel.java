@@ -24,7 +24,7 @@ public class Home_RecordEditFragmentViewModel extends Home_RecordEditFragmentCon
 
     private CategoryModel setting = new CategoryModel();
     @Override
-    public void saveOrUpdateRecord(String amt, CategoryModel categoryModel, Record oldRecord) {
+    public void saveOrUpdateRecord(String amt, CategoryModel categoryModel, Record oldRecord,String remark) {
         if (oldRecord == null){
             oldRecord = new Record();
             oldRecord.setAmount(AmountUtil.amtToCent(amt));
@@ -43,6 +43,7 @@ public class Home_RecordEditFragmentViewModel extends Home_RecordEditFragmentCon
             oldRecord.setCategoryUniqueName(categoryModel.getUniqueName());
         }
 
+        oldRecord.setDesc(remark);
         RecordDaoManager.saveOrUpdate(oldRecord);
         EventBus.getDefault().post(new RecordChanager());
     }
