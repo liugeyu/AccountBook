@@ -21,5 +21,6 @@
     <string name="date_format_y_m">%d年%%02d月</string>
     <string name="date_format_today_time">今天 %02d:%02d</string>
     <string name="file_size">文件大小: %.2fKB</string>
+    <string name="tips">tips</string>
 
 </resources>
